@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>👑 الزيارة الجامعة الكبيرة</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        /* إعدادات عامة */
+        
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background: #10101a;
+            color: #e0e0e0;
+            font-family: 'Tajawal', sans-serif;
+            text-align: center;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            padding-top: 0;
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+        
+        body.loaded {
+            opacity: 1;
+        }
+        /* رأس الصفحة */
+        
+        .header {
+            padding: 30px 20px 20px;
+            background: linear-gradient(135deg, #161625, #2d2d44);
+            border-bottom: 5px solid #ffd700;
+            /* لون ذهبي */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            margin-bottom: 30px;
+        }
+        
+        .header h2 {
+            margin: 0;
+            font-size: 2.5em;
+            color: #ffd700;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+            font-weight: 800;
+        }
+        /* حاوية المحتوى الرئيسي */
+        
+        .main-content {
+            flex-grow: 1;
+            padding: 20px;
+            max-width: 950px;
+            /* زيادة العرض للزيارة الطويلة */
+            margin: 0 auto;
+        }
+        /* التقويم */
+        
+        .calendar {
+            margin: 20px auto 40px;
+            padding: 15px;
+            font-size: 1.1em;
+            color: #fff;
+            border-radius: 10px;
+            background-color: rgba(255, 215, 0, 0.15);
+            /* لون ذهبي فاتح */
+            max-width: 90%;
+            line-height: 1.7;
+        }
+        /* صندوق الدعاء العام */
+        
+        .dua-box {
+            background: #1a1a2e;
+            border: 2px solid #ffd700;
+            /* حدود ذهبية */
+            border-radius: 15px;
+            padding: 30px 25px;
+            margin: 25px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            text-align: justify;
+        }
+        /* العناوين الداخلية للتقسيم */
+        
+        .dua-box h3 {
+            color: #ffd700;
+            /* لون ذهبي */
+            font-size: 1.8em;
+            margin-top: 30px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(255, 215, 0, 0.4);
+            text-align: right;
+            font-weight: 700;
+        }
+        /* تنسيق نص الزيارة لزيادة القراءة */
+        
+        .dua-box p {
+            font-size: 1.25em;
+            /* زيادة حجم الخط */
+            line-height: 2.3em;
+            margin: 25px 0;
+            padding: 0 10px;
+            color: #f5f5f5;
+            text-align: justify;
+        }
+        /* تلوين إرشادات النص */
+        
+        .dua-instruction {
+            display: block;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            color: #4CAF50;
+            /* لون أخضر للإرشادات */
+            font-size: 1.1em;
+            font-style: italic;
+            border-right: 3px solid #4CAF50;
+            padding-right: 10px;
+            text-align: right;
+        }
+        /* تلوين مصدر الزيارة */
+        
+        .source {
+            font-size: 1em;
+            color: #aaa;
+            margin-top: 30px;
+            padding-top: 15px;
+            border-top: 1px dashed #444;
+            text-align: center;
+        }
+        /* أزرار التنقل */
+        
+        .nav-buttons {
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+        
+        .back-btn,
+        .home-btn {
+            margin: 10px;
+            text-decoration: none;
+            color: #10101a;
+            background: #ffd700;
+            /* لون ذهبي */
+            padding: 14px 28px;
+            border-radius: 50px;
+            font-size: 1.2em;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            display: inline-block;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .back-btn:hover {
+            background-color: #e5c100;
+        }
+        
+        .home-btn {
+            background-color: #5d5d81;
+            color: #fff;
+        }
+        
+        .home-btn:hover {
+            background-color: #4a4a6b;
+        }
+        /* تذييل الصفحة */
+        
+        footer {
+            margin-top: auto;
+            padding: 15px 0;
+            background-color: #161625;
+            color: #888;
+            font-size: 0.9em;
+            border-top: 1px solid #444;
+        }
+        
+        footer a {
+            color: #ffd700;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body class="hidden">
+
+    <div class="header">
+        <h2>👑 الزيارة الجامعة الكبيرة</h2>
+        <h4 style="color: #ccc; margin-top: 5px;">يزار بها كل الأئمة المعصومين (عليهم السلام)</h4>
+    </div>
+
+    <div class="main-content">
+
+        <div class="calendar" id="calendar">
+            جاري محاولة تحميل التاريخ...
+        </div>
+
+        <div class="dua-box">
+            <h3 style="margin-top: 0;"><i class="fa-solid fa-moon"></i> المقدمة والشهادة بالتوحيد</h3>
+            <p class="dua-instruction">
+                يستحب أن تبدأ بالشهادتين ثم التسليم عليهم.
+            </p>
+            <p>
+                أَشْهَدُ أَلَّا إِلَهُ إِلَّا اللهُ وَحْدَهُ لا شَرِيكَ لَهُ، وَأَشْهَدُ أَنَّ مُحَمَّداً ـ صَلَّى اللهُ عَلَيْهِ وَآلِهِ ـ عَبْدُهُ وَرَسُولُهُ.
+            </p>
+
+            <h3><i class="fa-solid fa-house-chimney"></i> صفاتهم ومقامهم الإلهي</h3>
+            <p>
+                السَّلامُ عَلَيكُمْ يا أَهْلَ بَيْتِ النُّبُوَّةِ وَمَوْضِعَ الرِّسَالَةِ وَمُخْتَلَفَ الْمَلائِكَةِ وَمَهْبِطَ الْوَحْيِ وَمَعْدِنَ الرَّحْمَةِ وَخُزَّانَ الْعِلْمِ وَمُنْتَهَى الْحِلْمِ وَأُصُولَ الْكَرَمِ وَقَادَةَ الأُمَمِ وَأَوْلِيَاءَ النِّعَمِ
+                وَعَنَاصِرَ الأَبْرَارِ وَدَعَائِمَ الأَخْيَارِ وَسَاسَةَ الْعِبَادِ وَأَرْكَانَ الْبِلادِ وَأَبْوَابَ الإِيمَانِ وَأُمَنَاءَ الرَّحْمَنِ وَسُلالَةَ النَّبِيِّينَ وَصَفْوَةَ الْمُرْسَلِينَ وَعِتْرَةَ خِيَرَةِ رَبِّ الْعَالَمِينَ وَرَحْمَةُ
+                اللهِ وَبَرَكَاتُهُ، السَّلامُ عَلَى أَئِمَّةِ الْهُدَى وَمَصَابِيحِ الدُّجَى وَأَعْلامِ التُّقَى وَذَوِي النُّهَى وَأُولِي الْحِجَى وَكَهْفِ الْوَرَى وَوَرَثَةِ الأَنْبِيَاءِ وَالْمَثَلِ الأَعْلَى وَالدَّعْوَةِ الْحُسْنَى وَحُجَجِ اللهِ
+                عَلَى أَهْلِ الدُّنْيَا وَالآخِرَةِ وَالأُولَى وَرَحْمَةُ اللهِ وَبَرَكَاتُهُ... [ويستمر المقطع الأول].
+            </p>
+
+            <h3><i class="fa-solid fa-hand-holding-heart"></i> الاصطفاء الإلهي وطاعتهم</h3>
+            <p>
+                ...وَأَشْهَدُ أَنَّكُمْ الأَئِمَّةُ الرَّاشِدُونَ الْمَهْدِيُّونَ الْمَعْصُومُونَ الْمُكَرَّمُونَ الْمُـقَرَّبُونَ الْمُـتَّقُونَ الصَّادِقُونَ الْمُصْطَفَوْنَ الْمُطِيعُونَ لِلَّهِ الْقَوَّامُونَ بِأَمْرِهِ الْعَامِلُونَ بِإِرَادَتِهِ الْفَائِزُونَ بِكَرَامَتِهِ،
+                اصْطَفَاكُمْ بِعِلْمِهِ وَارْتَضَاكُمْ لِغَيْبِهِ وَاخْتَارَكُمْ لِسِرِّهِ وَاجْتَبَاكُمْ بِقُدْرَتِهِ وَأَعَزَّكُمْ بِهُدَاهُ وَخَصَّكُمْ بِبُرْهَانِهِ وَانْتَجَبَكُمْ لِنُورِهِ وَأَيَّدَكُمْ بِرُوحِهِ، وَرَضِيَكُمْ خُلَفَاءَ فِي أَرْضِهِ
+                وَحُجَجاً عَلَى بَرِيَّتِهِ وَأَنْصَاراً لِدِينِهِ... [ويستمر في وصف اصطفائهم وقيامهم بأمر الله].
+            </p>
+
+            <h3><i class="fa-solid fa-link"></i> العلاقة بهم والنجاة بولايتهم</h3>
+            <p>
+                فَالرَّاغِبُ عَنْكُمْ مَارِقٌ وَاللازِمُ لَكُمْ لاحِقٌ وَالْمُقَصِّرُ فِي حَقِّكُمْ زَاهِقٌ وَالْحَقُّ مَعَكُمْ وَفِيكُمْ وَمِنْكُمْ وَإِلَيْكُمْ وَأَنْتُمْ أَهْلُهُ وَمَعْدِنُهُ... مَنْ وَالاكُمْ فَقَدْ وَالَى اللهَ وَمَنْ عَادَاكُمْ فَقَدْ عَادَى اللهَ
+                وَمَنْ أَحَبَّكُمْ فَقَدْ أَحَبَّ اللهَ وَمَنْ أَبْغَضَكُمْ فَقَدْ أَبْغَضَ اللهَ وَمَنِ اعْتَصَمَ بِكُمْ فَقَدِ اعْتَصَمَ بِاللهِ، أَنْتُمُ الصِّرَاطُ الأَقْوَمُ وَشُهَدَاءُ دَارِ الْفَنَاءِ وَشُفَعَاءُ دَارِ الْبَقَاءِ وَالرَّحْمَةُ
+                الْمَوْصُولَةُ وَالآيَةُ الْمَخْزُونَةُ وَالأَمَانَةُ الْمَحْفُوظَةُ وَالْبَابُ الْمُبْتَلَى بِهِ النَّاسُ، مَنْ أَتَاكُمْ نَجَا وَمَنْ لَمْ يَأْتِكُمْ هَلَكَ... [ويستمر في وصف نجاة المتمسك بهم].
+            </p>
+
+            <h3><i class="fa-solid fa-crown"></i> الإقرار بجلالة قدرهم وعظيم شأنهم</h3>
+            <p>
+                أَشْهَدُ أَنَّ هَذَا سَابِقٌ لَكُمْ فِيمَا مَضَى وَجَارٍ لَكُمْ فِيمَا بَقِيَ وَأَنَّ أَرْوَاحَكُمْ وَنُورَكُمْ وَطِينَتَكُمْ وَاحِدَةٌ طَابَتْ وَطَهُرَتْ بَعْضُهَا مِنْ بَعْضٍ، خَلَقَكُمُ اللهَ أَنْوَاراً فَجَعَلَكُمْ بِعَرْشِهِ مُحَدِقِينَ حَتَّى مَنَّ
+                عَلَيْنَا بِكُمْ... بِأَبِي أَنْتُمْ وَأُمِّي وَأَهْلِي وَمَالِي وَأُسْرَتِي، أُشْهِدُ اللهَ وَأُشْهِدُكُمْ أَنِّي مُؤْمِنٌ بِكُمْ وَبِمَا آمَنْتُمْ بِهِ كَافِرٌ بِعَدُوِّكُمْ وَبِمَا كَفَرْتُمْ بِهِ... [ويستمر في الإقرار بولايتهم والتبرؤ
+                من أعدائهم].
+            </p>
+
+            <h3><i class="fa-solid fa-handshake"></i> العهد والرجاء والختام بالدعاء</h3>
+            <p>
+                ...فَمَعَكُمْ مَعَكُمْ لا مَعَ غَيْرِكُمْ آمَنْتُ بِكُمْ وَتَوَلَّيْتُ آخِرَكُمْ بِمَا تَوَلَّيْتُ بِهِ أَوَّلَكُمْ وَبَرِئْتُ إِلَى اللهِ عَزَّ وَجَلَّ مِنْ أَعْدَائِكُمْ... فَثَبَّتَنِيَ اللهُ أَبَداً مَا حَيِيتُ عَلَى مُوَالاتِكُمْ وَمَحَبَّتِكُمْ
+                وَدِينِكُمْ وَوَفَّقَنِي لِطَاعَتِكُمْ وَرَزَقَنِي شَفَاعَتَكُمْ وَجَعَلَنِي مِنْ خِيَارِ مَوَالِيكُمُ التَّابِعِينَ لِمَا دَعَوْتُمْ إِلَيْهِ، وَجَعَلَنِي مِمَّنْ يَقْتَصُّ آثَارَكُمْ وَيَسْلُكُ سَبِيلَكُمْ وَيَهْتَدِي بِهُدَاكُمْ...
+            </p>
+            <p>
+                بِأَبِي أَنْتُمْ وَأُمِّي وَنَفْسِي وَأَهْلِي وَمَالِي، مَنْ أَرَادَ اللهَ بَدَأَ بِكُمْ وَمَنْ وَحَّدَهُ قَبِلَ عَنْكُمْ وَمَنْ قَصَدَهُ تَوَجَّهَ بِكُمْ... [ويستمر في عظمة مقامهم ومنزلتهم].
+            </p>
+            <p>
+                رَبَّنَا آمَنَّا بِمَا أَنْزَلْتَ وَاتَّبَعْنَا الرَّسُولَ فَاكْتُبْنَا مَعَ الشَّاهِدِينَ، رَبَّنَا لا تُزِغْ قُلُوبَنَا بَعْدَ إِذْ هَدَيْتَنَا وَهَبْ لَنَا مِنْ لَدُنْكَ رَحْمَةً إِنَّكَ أَنْتَ الْوَهَّابُ، سُبْحَانَ رَبِّنَا إِنْ كَانَ وَعْدُ رَبِّنَا
+                لَمَفْعُولاً.
+            </p>
+            <p>
+                يَا وَلِيَّ اللهِ إِنَّ بَيْنِي وَبَيْنَ اللهِ عَزَّ وَجَلَّ ذُنُوباً لا يَأْتِي عَلَيْهَا إِلا رِضَاكُمْ فَبِحَقِّ مَنِ ائْتَمَنَكُمْ عَلَى سِرِّهِ... لَمَّا اسْتَوْهَبْتُمْ ذُنُوبِي وَكُنْتُمْ شُفَعَائِي فَإِنِّي لَكُمْ مُطِيعٌ... وَصَلَّى اللهُ عَلَى
+                مُحَمَّدٍ وَآلِهِ الطَّاهِرِينَ وَسَلَّمَ كَثِيراً وَحَسْبُنَا الله وَنِعْمَ الْوَكِيلُ.
+            </p>
+            <p class="source">
+                المصدر: مفاتيح الجنان (وهي منقولة عن الإمام الهادي عليه السلام).
+            </p>
+        </div>
+
+
+        <div class="nav-buttons">
+            <a href="ziyarat.html" class="back-btn"><i class="fa-solid fa-list-ul"></i> الرجوع لقسم الزيارات</a>
+            <a href="index.html" class="home-btn"><i class="fa-solid fa-house"></i> الذهاب للصفحة الرئيسية</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>حقوق النشر &copy; <a href="#">موقع نهج الشيعة</a> 2025</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.body.classList.add('loaded');
+        });
+
+        window.onload = function() {
+            const calendarDiv = document.getElementById('calendar');
+            const today = new Date();
+
+            // 1. حساب وعرض التاريخ المحلي الفوري (لتحميل سريع)
+            const gregorianDate = today.toLocaleDateString('ar-EG', {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+            const hijriDateFallback = new Intl.DateTimeFormat('ar-SA', {
+                calendar: 'islamic',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            }).format(today);
+
+            // العرض الفوري للتاريخ التقديري
+            calendarDiv.innerHTML =
+                `📆 التاريخ الميلادي: ${gregorianDate} <br> 
+                🕌 التاريخ الهجري (تقديري): <strong>${hijriDateFallback}</strong> <br>
+                <small>جاري محاولة تحديث التاريخ من مصدره...</small>`;
+
+
+            // 2. محاولة جلب التاريخ من موقع السيستاني في الخلفية
+            const proxyUrl = 'https://api.allorigins.win/get?url=';
+            const targetUrl = encodeURIComponent('https://www.sistani.org');
+
+            fetch(proxyUrl + targetUrl)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('فشل الاتصال بالخادم الوسيط');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    const htmlContent = data.contents;
+                    // التعبير النمطي للبحث عن التاريخ الهجري
+                    const regex = /style="margin-left:9px;">([^<]+)<\/span>/;
+                    const match = htmlContent.match(regex);
+
+                    let hijriDateFromSistani;
+
+                    if (match && match[1]) {
+                        // 3. تحديث التاريخ بمجرد الحصول على التاريخ الصحيح
+                        hijriDateFromSistani = match[1].trim();
+
+                        calendarDiv.innerHTML =
+                            `📆 التاريخ الميلادي: ${gregorianDate} <br> 
+                            🕌 التاريخ الهجري (المرجع): <strong>${hijriDateFromSistani}</strong>`;
+                    } else {
+                        throw new Error('لم يتم العثور على التاريخ بالصيغة المحددة.');
+                    }
+                })
+                .catch(error => {
+                    console.error("خطأ في جلب التاريخ:", error);
+                    // في حال الفشل، نظهر رسالة خطأ صغيرة أسفل التاريخ التقديري
+                    calendarDiv.innerHTML =
+                        `📆 التاريخ الميلادي: ${gregorianDate} <br> 
+                        🕌 الهجري (تقديري): <strong>${hijriDateFallback}</strong> <br>
+                        <small style="color:#ff6666; display:block; margin-top:5px;">⚠️ فشل جلب تاريخ المرجع.</small>`;
+                });
+        };
+    </script>
+</body>
+
+</html>

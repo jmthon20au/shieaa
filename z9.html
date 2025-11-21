@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌸 زيارة فاطمة الزهراء عليها السلام</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        /* إعدادات عامة */
+        
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background: #2b3042;
+            /* خلفية داكنة مائلة للزرقة */
+            color: #ddd;
+            font-family: 'Tajawal', sans-serif;
+            text-align: center;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            padding-top: 0;
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+        
+        body.loaded {
+            opacity: 1;
+        }
+        /* رأس الصفحة */
+        
+        .header {
+            padding: 30px 20px 20px;
+            background: linear-gradient(135deg, #1f2334, #3a4055);
+            border-bottom: 5px solid #d8bfd8;
+            /* بنفسجي فاتح/وردي للتعبير عن مقامها */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            margin-bottom: 30px;
+        }
+        
+        .header h2 {
+            margin: 0;
+            font-size: 2.5em;
+            color: #f0f0f0;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+            font-weight: 800;
+        }
+        /* حاوية المحتوى الرئيسي */
+        
+        .main-content {
+            flex-grow: 1;
+            padding: 20px;
+            max-width: 850px;
+            margin: 0 auto;
+        }
+        /* التقويم */
+        
+        .calendar {
+            margin: 20px auto 40px;
+            padding: 15px;
+            font-size: 1.1em;
+            color: #fff;
+            border-radius: 10px;
+            background-color: rgba(216, 191, 216, 0.15);
+            /* لون خفيف */
+            max-width: 90%;
+            line-height: 1.7;
+        }
+        /* صندوق الدعاء العام */
+        
+        .dua-box {
+            background: #363c4f;
+            border: 2px solid #d8bfd8;
+            /* حدود بنفسجية فاتحة */
+            border-radius: 15px;
+            padding: 30px 25px;
+            margin: 25px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            text-align: justify;
+        }
+        /* العناوين الداخلية للتقسيم */
+        
+        .dua-box h3 {
+            color: #ffd700;
+            /* لون ذهبي */
+            font-size: 1.8em;
+            margin-top: 30px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px dashed #d8bfd8;
+            text-align: right;
+            font-weight: 700;
+        }
+        /* تنسيق نص الزيارة لزيادة القراءة */
+        
+        .dua-box p {
+            font-size: 1.25em;
+            line-height: 2.3em;
+            margin: 25px 0;
+            padding: 0 10px;
+            color: #f5f5f5;
+            text-align: justify;
+        }
+        /* تلوين إرشادات النص */
+        
+        .dua-instruction {
+            display: block;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            color: #e91e63;
+            /* وردي غامق للإرشاد */
+            font-size: 1.1em;
+            font-style: italic;
+            border-right: 3px solid #e91e63;
+            padding-right: 10px;
+            text-align: right;
+        }
+        /* أزرار التنقل */
+        
+        .nav-buttons {
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+        
+        .back-btn,
+        .home-btn {
+            margin: 10px;
+            text-decoration: none;
+            color: #1a1a1a;
+            background: #d8bfd8;
+            /* لون الزيارة */
+            padding: 14px 28px;
+            border-radius: 50px;
+            font-size: 1.2em;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            display: inline-block;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .back-btn:hover {
+            background-color: #c0a8c0;
+        }
+        
+        .home-btn {
+            background-color: #5d5d81;
+            color: #fff;
+        }
+        
+        .home-btn:hover {
+            background-color: #4a4a6b;
+        }
+        /* تذييل الصفحة */
+        
+        footer {
+            margin-top: auto;
+            padding: 15px 0;
+            background-color: #1f2334;
+            color: #888;
+            font-size: 0.9em;
+            border-top: 1px solid #444;
+        }
+        
+        footer a {
+            color: #d8bfd8;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body class="hidden">
+
+    <div class="header">
+        <h2>🌸 زيارة فاطمة الزهراء عليها السلام</h2>
+        <h4 style="color: #ccc; margin-top: 5px;">سيدة نساء العالمين</h4>
+    </div>
+
+    <div class="main-content">
+
+        <div class="calendar" id="calendar">
+            جاري محاولة تحميل التاريخ...
+        </div>
+
+        <div class="dua-box">
+            <h3 style="margin-top: 0;"><i class="fa-solid fa-cloud-moon"></i> الزيارة المشهورة</h3>
+            <p class="dua-instruction">
+                تقول عند القبر (أو الإيماء إليه إذا كنت بعيداً):
+            </p>
+            <p>
+                يَا مُمْتَحَنَةُ امْتَحَنَكِ اللّٰهُ الَّذِي خَلَقَكِ قَبْلَ أَنْ يَخْلُقَكِ، فَوَجَدَكِ لِمَا امْتَحَنَكِ صابِرَةً، وَزَعَمْنَا أَنَّا لَكِ أَوْلِياءُ وَمُصَدِّقُونَ، وَصابِرُونَ لِكُلِّ ما أَتانا بِهِ أَبُوكِ صَلَّى اللّٰهُ عَلَيْهِ وَآلِهِ وَوَصِيُّهُ،
+                فَإِنَّا نَسْأَلُكِ إِنْ كُنَّا صَدَّقْناكِ إِلَّا أَلْحَقْتِنا بِتَصْدِيقِنا لَهُما لِنُبَشِّرَ أَنْفُسَنا بِأَنَّا قَدْ طَهُرْنا بِوِلايَتِكِ.
+            </p>
+
+            <h3><i class="fa-solid fa-hand-holding-heart"></i> صيغة أخرى للزيارة</h3>
+            <p class="dua-instruction">
+                صيغة أخرى مروية عن الإمام الرضا (ع):
+            </p>
+            <p>
+                السَّلاَمُ عَلَيْكِ يَا بِنْتَ رَسُولِ اللّٰهِ، السَّلاَمُ عَلَيْكِ يَا بِنْتَ نَبِيِّ اللّٰهِ، السَّلاَمُ عَلَيْكِ يَا بِنْتَ حَبِيبِ اللّٰهِ، السَّلاَمُ عَلَيْكِ يَا بِنْتَ خَلِيلِ اللّٰهِ، السَّلاَمُ عَلَيْكِ يَا بِنْتَ صَفِيِّ اللّٰهِ، السَّلاَمُ
+                عَلَيْكِ يَا بِنْتَ أَمِينِ اللّٰهِ، السَّلاَمُ عَلَيْكِ يَا بِنْتَ خَيْرِ خَلْقِ اللّٰهِ، السَّلاَمُ عَلَيْكِ يَا سَيِّدَةَ نِساءِ الْعَالَمِينَ مِنَ الأَوَّلِينَ وَالآخِرِينَ.
+            </p>
+            <p>
+                السَّلاَمُ عَلَيْكِ يَا زَوْجَةَ وَلِيِّ اللّٰهِ وَخَيْرِ الْخَلْقِ بَعْدَ رَسُولِ اللّٰهِ، السَّلاَمُ عَلَيْكِ يَا أُمَّ الْحَسَنِ وَالْحُسَيْنِ سَيِّدَيْ شَبَابِ أَهْلِ الْجَنَّةِ، السَّلاَمُ عَلَيْكِ أَيَّتُهَا الصِّدِّيقَةُ الشَّهِيدَةُ، السَّلاَمُ
+                عَلَيْكِ أَيَّتُهَا الرَّضِيَّةُ الْمَرْضِيَّةُ، السَّلاَمُ عَلَيْكِ أَيَّتُهَا الْفَاضِلَةُ الزَّكِيَّةُ.
+            </p>
+
+            <h3><i class="fa-solid fa-lightbulb"></i> طلب الثبات والشفاعة</h3>
+            <p>
+                اللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ وَآلِ مُحَمَّدٍ، وَاجْعَلْ صَلَوَاتِكَ وَصَلَوَاتِ مَلائِكَتِكَ وَرُسُلِكَ عَلَيْهَا وَعَلَى أَبِيهَا وَبَعْلِهَا وَوُلْدِهَا الأَئِمَّةِ الطَّاهِرِينَ.
+            </p>
+            <p>
+                اللَّهُمَّ إِنَّا نَتَوَجَّهُ بِهَا وَبِأَبِيهَا وَبَعْلِهَا وَوُلْدِهَا إِلَيْكَ فِي هَذَا الْيَوْمِ وَكُلِّ يَوْمٍ، وَنَتَوَسَّلُ بِهَا إِلَيْكَ فِي كُلِّ أَمْرٍ مِنْ أُمُورِ الدُّنْيَا وَالآخِرَةِ، فَإِنَّا نَسْأَلُكَ يَا مَوْلاتِي يَا فَاطِمَةُ أَنْ
+                تَشْفَعِي لَنَا عِنْدَ اللّٰهِ، وَأَنْ تُقَدِّمِينَا مَعَكِ إِلَى الْجَنَّةِ.
+            </p>
+            <p class="source">
+                المصدر: مفاتيح الجنان (وهناك زيارات أخرى متعددة).
+            </p>
+        </div>
+
+
+        <div class="nav-buttons">
+            <a href="ziyarat.html" class="back-btn"><i class="fa-solid fa-list-ul"></i> الرجوع لقسم الزيارات</a>
+            <a href="index.html" class="home-btn"><i class="fa-solid fa-house"></i> الذهاب للصفحة الرئيسية</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>حقوق النشر &copy; <a href="#">موقع نهج الشيعة</a> 2025</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.body.classList.add('loaded');
+        });
+
+        window.onload = function() {
+            const calendarDiv = document.getElementById('calendar');
+            const today = new Date();
+
+            // 1. حساب وعرض التاريخ المحلي الفوري (لتحميل سريع)
+            const gregorianDate = today.toLocaleDateString('ar-EG', {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+            const hijriDateFallback = new Intl.DateTimeFormat('ar-SA', {
+                calendar: 'islamic',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            }).format(today);
+
+            // العرض الفوري للتاريخ التقديري
+            calendarDiv.innerHTML =
+                `📆 التاريخ الميلادي: ${gregorianDate} <br> 
+                🕌 التاريخ الهجري (تقديري): <strong>${hijriDateFallback}</strong> <br>
+                <small>جاري محاولة تحديث التاريخ من مصدره...</small>`;
+
+
+            // 2. محاولة جلب التاريخ من موقع السيستاني في الخلفية
+            const proxyUrl = 'https://api.allorigins.win/get?url=';
+            const targetUrl = encodeURIComponent('https://www.sistani.org');
+
+            fetch(proxyUrl + targetUrl)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('فشل الاتصال بالخادم الوسيط');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    const htmlContent = data.contents;
+                    // التعبير النمطي للبحث عن التاريخ الهجري
+                    const regex = /style="margin-left:9px;">([^<]+)<\/span>/;
+                    const match = htmlContent.match(regex);
+
+                    let hijriDateFromSistani;
+
+                    if (match && match[1]) {
+                        // 3. تحديث التاريخ بمجرد الحصول على التاريخ الصحيح
+                        hijriDateFromSistani = match[1].trim();
+
+                        calendarDiv.innerHTML =
+                            `📆 التاريخ الميلادي: ${gregorianDate} <br> 
+                            🕌 التاريخ الهجري (المرجع): <strong>${hijriDateFromSistani}</strong>`;
+                    } else {
+                        throw new Error('لم يتم العثور على التاريخ بالصيغة المحددة.');
+                    }
+                })
+                .catch(error => {
+                    console.error("خطأ في جلب التاريخ:", error);
+                    // في حال الفشل، نظهر رسالة خطأ صغيرة أسفل التاريخ التقديري
+                    calendarDiv.innerHTML =
+                        `📆 التاريخ الميلادي: ${gregorianDate} <br> 
+                        🕌 الهجري (تقديري): <strong>${hijriDateFallback}</strong> <br>
+                        <small style="color:#ff6666; display:block; margin-top:5px;">⚠️ فشل جلب تاريخ المرجع.</small>`;
+                });
+        };
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌸 الصلاة على محمد وآل محمد</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        /* إعدادات عامة */
+        
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background: #1e1e2f;
+            color: #fff;
+            font-family: 'Tajawal', sans-serif;
+            text-align: center;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        /* رأس الصفحة */
+        
+        .header {
+            padding: 20px 20px;
+            background: linear-gradient(135deg, #161625, #2d2d44);
+            border-bottom: 3px solid #f5b921;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            margin-bottom: 30px;
+        }
+        
+        .header h2 {
+            margin: 0;
+            font-size: 2.2em;
+            color: #f5b921;
+            text-shadow: 1px 1px 2px #000;
+        }
+        /* حاوية المحتوى الرئيسي */
+        
+        .main-content {
+            flex-grow: 1;
+            padding: 20px 10px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        /* العداد */
+        
+        .counter {
+            font-size: 5em;
+            font-weight: 800;
+            margin: 30px 0 10px;
+            color: #fff;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 10px 0;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            min-height: 70px;
+        }
+        /* زر الصلاة (الكبير والأساسي) */
+        
+        .btn-salawat {
+            width: 90%;
+            max-width: 400px;
+            padding: 30px 20px;
+            margin: 30px auto 20px;
+            border: none;
+            border-radius: 20px;
+            font-size: 1.6em;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+            color: #fff;
+            background-color: #28a745;
+            /* اللون الأخضر */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+            display: block;
+        }
+        
+        .btn-salawat:active {
+            transform: scale(0.98);
+            background-color: #1d7b35;
+        }
+        /* زر إعادة التعيين (زر ثانوي) */
+        
+        .btn-reset {
+            background-color: #dc3545;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-size: 1.2em;
+            font-weight: 700;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .btn-reset:hover {
+            background-color: #c82333;
+            transform: translateY(-2px);
+        }
+        /* زر الرجوع */
+        
+        .back-btn {
+            margin-top: 40px;
+            display: inline-block;
+            text-decoration: none;
+            color: #161625;
+            background: #f5b921;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-size: 1.2em;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .back-btn:hover {
+            background-color: #d89d1b;
+            transform: translateY(-2px);
+        }
+        /* التقويم */
+        
+        .calendar {
+            margin: 20px auto 30px;
+            padding: 15px;
+            font-size: 1em;
+            color: #fff;
+            border-radius: 10px;
+            background-color: rgba(245, 185, 33, 0.1);
+            max-width: 90%;
+            line-height: 1.6;
+        }
+        /* التذييل */
+        
+        footer {
+            margin-top: auto;
+            background-color: #161625;
+            color: #888;
+            padding: 15px 0;
+            font-size: 0.9em;
+            border-top: 1px solid #444;
+        }
+        
+        footer a {
+            color: #f5b921;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <h2>🌸 الصلاة على محمد وآل محمد</h2>
+    </div>
+
+    <div class="main-content">
+
+        <div class="calendar" id="calendar">
+            جاري تحميل التقويم...
+        </div>
+
+        <div class="counter" id="salawatCounter">0</div>
+
+        <button class="btn-salawat" onclick="countSalawat()">
+            اللهم صلِّ على محمد وآل محمد
+        </button>
+
+        <button class="btn-reset" onclick="resetSalawat()">
+            <i class="fa-solid fa-arrows-rotate"></i> إعادة تعيين
+        </button>
+
+        <div>
+            <a class="back-btn" href="tasbeeh.html">
+                <i class="fa-solid fa-arrow-right-from-bracket"></i> الرجوع لقائمة التسبيح
+            </a>
+        </div>
+    </div>
+
+    <footer>
+        <p>حقوق النشر &copy; <a href="#">نهج الشيعة</a> 2025</p>
+    </footer>
+
+    <script>
+        let salawatCount = 0;
+
+        function countSalawat() {
+            // اهتزاز خفيف عند كل ضغطة
+            if (navigator.vibrate) {
+                navigator.vibrate(50);
+            }
+
+            salawatCount++;
+            document.getElementById('salawatCounter').innerText = salawatCount;
+        }
+
+        function resetSalawat() {
+            salawatCount = 0;
+            document.getElementById('salawatCounter').innerText = salawatCount;
+            // اهتزاز عند إعادة التعيين
+            if (navigator.vibrate) {
+                navigator.vibrate(150);
+            }
+        }
+
+        // جلب التاريخ الميلادي والهجري (مع جلب تاريخ السيستاني)
+        function updateCalendar() {
+            const calendarDiv = document.getElementById('calendar');
+            const today = new Date();
+
+            // التاريخ الميلادي والتقديري الفوري
+            const gregorianDate = today.toLocaleDateString('ar-EG', {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+            const hijriDateFallback = new Intl.DateTimeFormat('ar-SA', {
+                calendar: 'islamic',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            }).format(today);
+
+            // العرض الفوري للتاريخ التقديري
+            calendarDiv.innerHTML =
+                `📅 الميلادي: ${gregorianDate} <br> 
+                🕌 الهجري (تقديري): <strong>${hijriDateFallback}</strong> <br>
+                <small>جاري محاولة تحديث التاريخ من مصدره...</small>`;
+
+
+            // محاولة جلب التاريخ من موقع السيستاني في الخلفية (نفس الكود السابق)
+            const proxyUrl = 'https://api.allorigins.win/get?url=';
+            const targetUrl = encodeURIComponent('https://www.sistani.org');
+
+            fetch(proxyUrl + targetUrl)
+                .then(response => {
+                    if (!response.ok) throw new Error('فشل الاتصال بالخادم الوسيط');
+                    return response.json();
+                })
+                .then(data => {
+                    const htmlContent = data.contents;
+                    const regex = /style="margin-left:9px;">([^<]+)<\/span>/;
+                    const match = htmlContent.match(regex);
+
+                    if (match && match[1]) {
+                        const hijriDateFromSistani = match[1].trim();
+                        // تحديث التاريخ بمجرد الحصول على التاريخ الصحيح
+                        calendarDiv.innerHTML =
+                            `📅 الميلادي: ${gregorianDate} <br> 
+                            🕌 الهجري (المرجع): <strong>${hijriDateFromSistani}</strong>`;
+                    } else {
+                        throw new Error('لم يتم العثور على التاريخ بالصيغة المحددة.');
+                    }
+                })
+                .catch(error => {
+                    console.error("خطأ في جلب التاريخ:", error);
+                    // في حال الفشل، نترك التاريخ التقديري مع إشعار
+                    calendarDiv.innerHTML =
+                        `📅 الميلادي: ${gregorianDate} <br> 
+                        🕌 الهجري (تقديري): <strong>${hijriDateFallback}</strong> <br>
+                        <small style="color:#ff6666; display:block; margin-top:5px;">⚠️ فشل جلب تاريخ المرجع.</small>`;
+                });
+        }
+
+        window.onload = updateCalendar;
+    </script>
+
+</body>
+
+</html>

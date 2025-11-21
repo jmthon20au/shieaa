@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💚 زيارة النبي الأكرم محمد صلى الله عليه وآله</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        /* إعدادات عامة */
+        
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background: #f0f4f7;
+            /* خلفية فاتحة نسبياً للزيارة النبوية */
+            color: #333;
+            font-family: 'Tajawal', sans-serif;
+            text-align: center;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            padding-top: 0;
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+        
+        body.loaded {
+            opacity: 1;
+        }
+        /* رأس الصفحة */
+        
+        .header {
+            padding: 30px 20px 20px;
+            background: linear-gradient(135deg, #005a4a, #008f7b);
+            /* تدرج أخضر القبة */
+            border-bottom: 5px solid #ffd700;
+            /* لون ذهبي */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            margin-bottom: 30px;
+        }
+        
+        .header h2 {
+            margin: 0;
+            font-size: 2.5em;
+            color: #ffd700;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+            font-weight: 800;
+        }
+        /* حاوية المحتوى الرئيسي */
+        
+        .main-content {
+            flex-grow: 1;
+            padding: 20px;
+            max-width: 850px;
+            margin: 0 auto;
+        }
+        /* التقويم */
+        
+        .calendar {
+            margin: 20px auto 40px;
+            padding: 15px;
+            font-size: 1.1em;
+            color: #1a1a1a;
+            border-radius: 10px;
+            background-color: #e0f2f1;
+            /* لون أخضر نعناعي فاتح */
+            max-width: 90%;
+            line-height: 1.7;
+            border: 1px solid #008f7b;
+        }
+        /* صندوق الدعاء العام */
+        
+        .dua-box {
+            background: #ffffff;
+            border: 2px solid #008f7b;
+            /* حدود خضراء */
+            border-radius: 15px;
+            padding: 30px 25px;
+            margin: 25px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: justify;
+            color: #1a1a1a;
+        }
+        /* العناوين الداخلية للتقسيم */
+        
+        .dua-box h3 {
+            color: #008f7b;
+            /* أخضر القبة */
+            font-size: 1.8em;
+            margin-top: 30px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px dashed #008f7b;
+            text-align: right;
+            font-weight: 700;
+        }
+        /* تنسيق نص الزيارة لزيادة القراءة */
+        
+        .dua-box p {
+            font-size: 1.25em;
+            line-height: 2.4em;
+            margin: 25px 0;
+            padding: 0 10px;
+            color: #222;
+            text-align: justify;
+        }
+        /* تلوين إرشادات النص */
+        
+        .dua-instruction {
+            display: block;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            color: #d4af37;
+            /* ذهبي للإرشادات */
+            font-size: 1.1em;
+            font-style: italic;
+            border-right: 3px solid #d4af37;
+            padding-right: 10px;
+            text-align: right;
+        }
+        /* تلوين الصلاة على النبي وآله (لتكون مميزة) */
+        
+        .salawat {
+            color: #a30000;
+            /* أحمر داكن */
+            font-weight: 700;
+        }
+        /* أزرار التنقل */
+        
+        .nav-buttons {
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+        
+        .back-btn,
+        .home-btn {
+            margin: 10px;
+            text-decoration: none;
+            color: #fff;
+            background: #008f7b;
+            /* لون أخضر القبة */
+            padding: 14px 28px;
+            border-radius: 50px;
+            font-size: 1.2em;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            display: inline-block;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .back-btn:hover {
+            background-color: #007a67;
+        }
+        
+        .home-btn {
+            background-color: #5d5d81;
+            color: #fff;
+        }
+        
+        .home-btn:hover {
+            background-color: #4a4a6b;
+        }
+        /* تذييل الصفحة */
+        
+        footer {
+            margin-top: auto;
+            padding: 15px 0;
+            background-color: #005a4a;
+            color: #ccc;
+            font-size: 0.9em;
+            border-top: 1px solid #444;
+        }
+        
+        footer a {
+            color: #ffd700;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body class="hidden">
+
+    <div class="header">
+        <h2>💚 زيارة النبي الأكرم محمد <span class="salawat">صلى الله عليه وآله</span></h2>
+        <h4 style="color: #ccc; margin-top: 5px;">زيارة عن قرب أو بعد</h4>
+    </div>
+
+    <div class="main-content">
+
+        <div class="calendar" id="calendar">
+            جاري محاولة تحميل التاريخ...
+        </div>
+
+        <div class="dua-box">
+            <h3 style="margin-top: 0;"><i class="fa-solid fa-peace"></i> السلام عليهم والشهادة بالرسالة</h3>
+            <p class="dua-instruction">
+                عندما تريد زيارة النبي (ص) في المدينة أو من أي مكان، فقل:
+            </p>
+            <p>
+                أَشْهَدُ أَنْ لاَ إِلَهَ إِلَّا اللهُ وَحْدَهُ لاَ شَرِيكَ لَهُ، وَأَشْهَدُ أَنَّ مُحَمَّداً عَبْدُهُ وَرَسُولُهُ، وَأَنَّهُ سَيِّدُ الْأَوَّلِينَ وَالْآخِرِينَ، وَأَنَّهُ سَيِّدُ الْأَنْبِيَاءِ وَالْمُرْسَلِينَ.
+            </p>
+            <p>
+                <span class="salawat">اللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ عَبْدِكَ وَرَسُولِكَ وَنَبِيِّكَ</span>، وَعَلَى أَهْلِ بَيْتِهِ الطَّيِّبِينَ الطَّاهِرِينَ، وَسَلِّمْ تَسْلِيماً كَثِيراً.
+            </p>
+
+            <h3><i class="fa-solid fa-feather-alt"></i> خطاب الرسول الأكرم (ص)</h3>
+            <p>
+                السَّلاَمُ عَلَيْكَ يَا رَسُولَ اللهِ، السَّلاَمُ عَلَيْكَ يَا نَبِيَّ اللهِ، السَّلاَمُ عَلَيْكَ يَا مُحَمَّدَ بْنَ عَبْدِ اللهِ، السَّلاَمُ عَلَيْكَ يَا خَاتَمَ النَّبِيِّينَ. أَشْهَدُ أَنَّكَ قَدْ بَلَّغْتَ الرِّسَالَةَ، وَأَقَمْتَ الصَّلاةَ، وَآتَيْتَ
+                الزَّكَاةَ، وَأَمَرْتَ بِالْمَعْرُوفِ، وَنَهَيْتَ عَنِ الْمُنْكَرِ، وَعَبَدْتَ اللهَ مُخْلِصاً حَتَّى أَتَاكَ الْيَقِينُ، <span class="salawat">فَصَلَّى اللهُ عَلَيْكَ وَآلِكَ الطَّيِّبِينَ الطَّاهِرِينَ</span>.
+            </p>
+
+            <h3><i class="fa-solid fa-sun"></i> إتمام النعمة بنا</h3>
+            <p>
+                وَأَنَا أَشْهَدُ يَا رَسُولَ اللهِ أَنَّكَ مُحَمَّدُ بْنُ عَبْدِ اللهِ، وَأَشْهَدُ أَنَّكَ قَدْ بَلَّغْتَ رِسَالاتِ رَبِّكَ، وَنَصَحْتَ لِأُمَّتِكَ، وَجَاهَدْتَ فِي سَبِيلِ اللهِ، وَعَبَدْتَ اللهَ حَتَّى أَتَاكَ الْيَقِينُ بِالْقَوْلِ الثَّابِتِ.
+            </p>
+            <p>
+                وَأَتَيْتَ عَلَى مَا مَضَى مِنْ أَصْحَابِكَ، وَدَعَوْتَ الْخَلْقَ إِلَى الْحَقِّ بِالْحِكْمَةِ وَالْمَوْعِظَةِ الْحَسَنَةِ، <span class="salawat">فَصَلَّى اللهُ عَلَيْكَ وَآلِكَ وَرَحْمَةُ اللهِ وَبَرَكَاتُهُ</span>.
+            </p>
+
+            <h3><i class="fa-solid fa-location-arrow"></i> طلب الشفاعة والقبول</h3>
+            <p class="dua-instruction">
+                ثم تقول:
+            </p>
+            <p>
+                اللَّهُمَّ إِنِّي أَتَوَجَّهُ بِكَ إِلَى اللهِ، وَبِنَبِيِّكَ نَبِيِّ الرَّحْمَةِ، صَلَّى اللهُ عَلَيْهِ وَآلِهِ، يَا أَبَا الْقَاسِمِ، يَا رَسُولَ اللهِ، يَا إِمَامَ الرَّحْمَةِ، يَا سَيِّدَنَا وَمَوْلانَا، إِنَّا تَوَجَّهْنَا وَاسْتَشْفَعْنَا وَتَوَسَّلْنَا
+                بِكَ إِلَى اللهِ، وَقَدَّمْنَاكَ بَيْنَ يَدَيْ حَاجَاتِنَا. يَا وَجِيهاً عِنْدَ اللهِ اشْفَعْ لَنَا عِنْدَ اللهِ.
+            </p>
+            <p>
+                <span class="salawat">اللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ وَآلِ مُحَمَّدٍ وَاغْفِرْ لِي وَارْحَمْنِي</span>، وَاجْعَلْنِي مِنَ الْمُسْتَغْفِرِينَ الَّذِينَ هُمْ عَلَى صَلاتِهِمْ دَائِمُونَ، وَإِلَى جَنَّاتِ النَّعِيمِ يُدْعَوْنَ، يَا رَبَّ
+                الْعَالَمِينَ.
+            </p>
+            <p class="source">
+                المصدر: مفاتيح الجنان (وهي من زيارات النبي المشهورة).
+            </p>
+        </div>
+
+
+        <div class="nav-buttons">
+            <a href="ziyarat.html" class="back-btn"><i class="fa-solid fa-list-ul"></i> الرجوع لقسم الزيارات</a>
+            <a href="index.html" class="home-btn"><i class="fa-solid fa-house"></i> الذهاب للصفحة الرئيسية</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>حقوق النشر &copy; <a href="#">موقع نهج الشيعة</a> 2025</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.body.classList.add('loaded');
+        });
+
+        window.onload = function() {
+            const calendarDiv = document.getElementById('calendar');
+            const today = new Date();
+
+            // 1. حساب وعرض التاريخ المحلي الفوري (لتحميل سريع)
+            const gregorianDate = today.toLocaleDateString('ar-EG', {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+            const hijriDateFallback = new Intl.DateTimeFormat('ar-SA', {
+                calendar: 'islamic',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            }).format(today);
+
+            // العرض الفوري للتاريخ التقديري
+            calendarDiv.innerHTML =
+                `📆 التاريخ الميلادي: ${gregorianDate} <br> 
+                🕌 التاريخ الهجري (تقديري): <strong>${hijriDateFallback}</strong> <br>
+                <small>جاري محاولة تحديث التاريخ من مصدره...</small>`;
+
+
+            // 2. محاولة جلب التاريخ من موقع السيستاني في الخلفية
+            const proxyUrl = 'https://api.allorigins.win/get?url=';
+            const targetUrl = encodeURIComponent('https://www.sistani.org');
+
+            fetch(proxyUrl + targetUrl)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('فشل الاتصال بالخادم الوسيط');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    const htmlContent = data.contents;
+                    // التعبير النمطي للبحث عن التاريخ الهجري
+                    const regex = /style="margin-left:9px;">([^<]+)<\/span>/;
+                    const match = htmlContent.match(regex);
+
+                    let hijriDateFromSistani;
+
+                    if (match && match[1]) {
+                        // 3. تحديث التاريخ بمجرد الحصول على التاريخ الصحيح
+                        hijriDateFromSistani = match[1].trim();
+
+                        calendarDiv.innerHTML =
+                            `📆 التاريخ الميلادي: ${gregorianDate} <br> 
+                            🕌 التاريخ الهجري (المرجع): <strong>${hijriDateFromSistani}</strong>`;
+                    } else {
+                        throw new Error('لم يتم العثور على التاريخ بالصيغة المحددة.');
+                    }
+                })
+                .catch(error => {
+                    console.error("خطأ في جلب التاريخ:", error);
+                    // في حال الفشل، نظهر رسالة خطأ صغيرة أسفل التاريخ التقديري
+                    calendarDiv.innerHTML =
+                        `📆 التاريخ الميلادي: ${gregorianDate} <br> 
+                        🕌 الهجري (تقديري): <strong>${hijriDateFallback}</strong> <br>
+                        <small style="color:#ff6666; display:block; margin-top:5px;">⚠️ فشل جلب تاريخ المرجع.</small>`;
+                });
+        };
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <link rel="icon" type="image/png" href="Nahg-alsheaa.ico">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌟 نهج الشيعة - الرئيسية</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <meta name="description" content="موقع نهج الشيعة يحتوي على أقسام للتسبيح، الأدعية، الزيارات، والأصوات مع التقويم الهجري والميلادي.">
+    <meta property="og:title" content="نهج الشيعة">
+    <meta property="og:description" content="موقع نهج الشيعة يحتوي على أقسام للتسبيح، الأدعية، الزيارات، والأصوات مع التقويم الهجري والميلادي.">
+    <meta property="og:image" content="Nahg-alsheaa.ico">
+    <meta property="og:url" content="https://www.shieaa.free.nf">
+    <meta property="og:type" content="website">
+    <style>
+        /* إعدادات عامة */
+        
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background: linear-gradient(to bottom, #1e1e2f, #2d2d44);
+            color: #fff;
+            font-family: 'Tajawal', sans-serif;
+            text-align: center;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            opacity: 0;
+            /* يبدأ مخفياً */
+            transition: opacity 1s ease;
+            /* تأثير ظهور سلس */
+        }
+        
+        body.loaded {
+            opacity: 1;
+            /* يظهر عند التحميل */
+        }
+        
+        .main-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            width: 95%;
+        }
+        /* رأس الموقع */
+        
+        .header {
+            padding: 40px 20px;
+            border-bottom: 3px solid #f5b921;
+            /* لون ذهبي مميز */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            background-color: #161625;
+            margin-bottom: 20px;
+        }
+        
+        .header h1 {
+            margin: 0;
+            font-size: 3em;
+            color: #f5b921;
+            text-shadow: 2px 2px 5px #000;
+            font-weight: 800;
+        }
+        /* التقويم */
+        
+        .calendar {
+            margin: 30px auto;
+            font-size: 1.2em;
+            padding: 20px;
+            border: 2px solid #f5b921;
+            border-radius: 12px;
+            background-color: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            line-height: 1.8;
+            max-width: 90%;
+        }
+        
+        .calendar strong {
+            color: #50e3c2;
+            /* لون مميز للتاريخ الهجري */
+        }
+        /* الأقسام (تصميم الشبكة) */
+        
+        .sections {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 40px;
+            gap: 20px;
+            flex-grow: 1;
+        }
+        
+        .section {
+            width: 250px;
+            height: 130px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 2px solid #f5b921;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4em;
+            transition: transform 0.3s, background 0.3s, border-color 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+        }
+        
+        .section:hover {
+            transform: translateY(-8px) scale(1.02);
+            background: rgba(255, 255, 255, 0.15);
+            border-color: #ffd700;
+        }
+        
+        .section a {
+            text-decoration: none;
+            color: #fff;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        
+        .section a i {
+            font-size: 2em;
+            margin-bottom: 10px;
+            color: #f5b921;
+            /* أيقونات ذهبية */
+        }
+        /* تذييل الموقع */
+        
+        .footer {
+            margin-top: 50px;
+            padding: 20px;
+            border-top: 2px solid #444;
+            background-color: #161625;
+            color: #aaa;
+            font-size: 0.9em;
+        }
+        /* استجابة الشاشات الصغيرة */
+        
+        @media (max-width: 600px) {
+            .section {
+                width: 45%;
+                height: 120px;
+                font-size: 1.2em;
+            }
+        }
+    </style>
+</head>
+
+<body class="hidden">
+
+    <div class="main-container">
+        <div class="header">
+            <h1>🌟 نهج الشيعة</h1>
+            <h4 style="color: #ccc;">موقع يجمع الأدعية والزيارات الشريفة</h4>
+        </div>
+
+        <div class="calendar" id="calendar">
+            جاري تحميل التقويم...
+        </div>
+
+        <div class="sections">
+            <div class="section">
+                <a href="tasbeeh.html">
+                    <i class="fa-solid fa-hand-fist"></i> التسبيح
+                </a>
+            </div>
+            <div class="section">
+                <a href="duas.html">
+                    <i class="fa-solid fa-book-open-reader"></i> الأدعية
+                </a>
+            </div>
+            <div class="section">
+                <a href="ziyarat.html">
+                    <i class="fa-solid fa-kaaba"></i> الزيارات
+                </a>
+            </div>
+            <div class="section">
+                <a href="quran.html">
+                    <i class="fa-solid fa-book-quran"></i> القرآن الكريم
+                </a>
+            </div>
+            <div class="section">
+                <a href="audio.html">
+                    <i class="fa-solid fa-headphones"></i> الصوتيات
+                </a>
+            </div>
+            <div class="section">
+                <a href="support.html">
+                    <i class="fa-solid fa-headset"></i> الدعم الفني
+                </a>
+            </div>
+            <div class="section">
+                <a href="dev.html">
+                    <i class="fa-solid fa-code"></i> مطور هذا الموقع
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="footer">
+        &copy; 2025 نهج الشيعة - جميع الحقوق محفوظة
+    </div>
+
+    <script>
+        // تأثير التحميل السلس
+        document.addEventListener('DOMContentLoaded', () => {
+            document.body.classList.add('loaded');
+        });
+
+        // الدالة المسؤولة عن جلب وعرض التاريخ
+        window.onload = function() {
+            const calendarDiv = document.getElementById('calendar');
+            const today = new Date();
+
+            // 1. حساب وعرض التاريخ المحلي الفوري (لتحميل سريع)
+            const gregorianDate = today.toLocaleDateString('ar-EG', {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+            const hijriDateFallback = new Intl.DateTimeFormat('ar-SA', {
+                calendar: 'islamic',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            }).format(today);
+
+            // العرض الفوري للتاريخ التقديري
+            calendarDiv.innerHTML =
+                `📅 التاريخ الميلادي: ${gregorianDate} <br> 
+                🕌 التاريخ الهجري (تقديري): <strong>${hijriDateFallback}</strong> <br>
+                <small>جاري محاولة تحديث التاريخ من مصدره...</small>`;
+
+
+            // 2. محاولة جلب التاريخ من موقع السيستاني في الخلفية
+            const proxyUrl = 'https://api.allorigins.win/get?url=';
+            const targetUrl = encodeURIComponent('https://www.sistani.org');
+
+            fetch(proxyUrl + targetUrl)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('فشل الاتصال بالخادم الوسيط');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    const htmlContent = data.contents;
+                    // التعبير النمطي للبحث عن التاريخ الهجري
+                    const regex = /style="margin-left:9px;">([^<]+)<\/span>/;
+                    const match = htmlContent.match(regex);
+
+                    let hijriDateFromSistani;
+
+                    if (match && match[1]) {
+                        // 3. تحديث التاريخ بمجرد الحصول على التاريخ الصحيح
+                        hijriDateFromSistani = match[1].trim();
+
+                        calendarDiv.innerHTML =
+                            `📅 التاريخ الميلادي: ${gregorianDate} <br> 
+                            🕌 التاريخ الهجري (المرجع): <strong>${hijriDateFromSistani}</strong>`;
+                    } else {
+                        throw new Error('لم يتم العثور على التاريخ بالصيغة المحددة.');
+                    }
+                })
+                .catch(error => {
+                    console.error("خطأ في جلب التاريخ:", error);
+                    // في حال الفشل، نظهر رسالة خطأ صغيرة أسفل التاريخ التقديري
+                    calendarDiv.innerHTML =
+                        `📅 التاريخ الميلادي: ${gregorianDate} <br> 
+                        🕌 التاريخ الهجري (تقديري): <strong>${hijriDateFallback}</strong> <br>
+                        <small style="color:#ff6666; display:block; margin-top:5px;">⚠️ فشل جلب تاريخ المرجع.</small>`;
+                });
+        }
+    </script>
+
+</body>
+
+</html>

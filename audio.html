@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <link rel="icon" type="image/png" href="Nahg-alsheaa.ico">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎧 الصوتيات - نهج الشيعة</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        /* إعدادات الصفحة الأساسية */
+        
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background: linear-gradient(to bottom, #1e1e2f, #2d2d44);
+            color: #fff;
+            font-family: 'Tajawal', sans-serif;
+            text-align: center;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        /* رأس الصفحة */
+        
+        .header {
+            padding: 40px 20px;
+            border-bottom: 3px solid #f5b921;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            background-color: #161625;
+            position: relative;
+        }
+        
+        .header h1 {
+            margin: 0;
+            font-size: 2.8em;
+            color: #f5b921;
+            text-shadow: 2px 2px 5px #000;
+            font-weight: 800;
+            animation: fadeDown 1s ease;
+        }
+        /* الأقسام (تصميم الشبكة) */
+        
+        .sections {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+            gap: 20px;
+            flex-grow: 1;
+        }
+        
+        .section {
+            width: 100%;
+            max-width: 350px;
+            /* لتقييد عرض الأقسام على الشاشات الكبيرة */
+            background: rgba(255, 255, 255, 0.08);
+            border: 2px solid #f5b921;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 1em;
+            transition: transform 0.4s, background 0.4s, border-color 0.4s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+            padding: 15px;
+            margin-top: 10px;
+            cursor: pointer;
+            opacity: 0;
+            animation: fadeUp 1s ease forwards;
+        }
+        
+        .section.active {
+            border-color: #50e3c2;
+            /* لون مختلف للمقطع النشط */
+            box-shadow: 0 0 20px #50e3c2;
+        }
+        
+        .section:hover {
+            transform: translateY(-5px) scale(1.02);
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        .section h3 {
+            margin-top: 5px;
+            margin-bottom: 15px;
+            color: #ccc;
+        }
+        
+        .section audio {
+            width: 90%;
+            border-radius: 10px;
+            outline: none;
+            filter: invert(1);
+            /* تعديل لون مشغل الصوت ليناسب الخلفية الداكنة */
+        }
+        /* أزرار التحكم */
+        
+        .controls {
+            padding: 20px 10px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            background-color: rgba(22, 22, 37, 0.7);
+            /* خلفية نصف شفافة للعناصر المتحكمة */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            margin-top: 10px;
+        }
+        
+        .control-btn {
+            padding: 12px 20px;
+            font-size: 1em;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            background: linear-gradient(135deg, #f5b921, #ff751a);
+            color: #161625;
+            font-weight: 700;
+            transition: transform 0.3s, background 0.3s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+        
+        .control-btn:hover {
+            background: linear-gradient(135deg, #ffd700, #ffa500);
+            transform: translateY(-3px);
+        }
+        /* تصميم أزرار المساعدة */
+        
+        .controls .control-btn:nth-child(3),
+        .controls .control-btn:nth-child(4),
+        .controls .control-btn:nth-child(8) {
+            background: linear-gradient(135deg, #0081ff, #00c3ff);
+            color: #fff;
+        }
+        
+        .controls .control-btn:nth-child(3):hover,
+        .controls .control-btn:nth-child(4):hover,
+        .controls .control-btn:nth-child(8):hover {
+            background: linear-gradient(135deg, #006aff, #00cfff);
+        }
+        /* زر الرجوع والتليجرام */
+        
+        .action-btns {
+            margin-top: 40px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        
+        .action-btns a {
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-size: 1.1em;
+            font-weight: 700;
+            transition: background 0.3s, transform 0.3s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            color: #fff;
+        }
+        
+        .back-btn {
+            background-color: #444;
+        }
+        
+        .back-btn:hover {
+            background-color: #555;
+            transform: scale(1.05);
+        }
+        
+        .telegram-btn {
+            background: linear-gradient(135deg, #08c, #00aced);
+        }
+        
+        .telegram-btn:hover {
+            background: linear-gradient(135deg, #006aff, #00cfff);
+            transform: scale(1.05);
+        }
+        /* تذييل الصفحة */
+        
+        .footer {
+            margin-top: auto;
+            /* يدفع التذييل للأسفل */
+            padding: 20px;
+            border-top: 2px solid #444;
+            background-color: #161625;
+            color: #aaa;
+            font-size: 0.9em;
+            letter-spacing: 1px;
+        }
+        /* شاشة تحميل والأنيميشنز */
+        
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #161625;
+            color: #f5b921;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2.5em;
+            z-index: 9999;
+            transition: opacity 0.5s;
+            flex-direction: column;
+        }
+        
+        .spinner {
+            border: 6px solid #444;
+            border-top: 6px solid #f5b921;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+        
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        
+        @keyframes fadeDown {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes fadeUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        /* زر الصعود للأعلى */
+        
+        #scrollTopBtn {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            padding: 10px 15px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 50%;
+            background-color: #50e3c2;
+            /* لون أخضر/أزرق مميز */
+            color: #161625;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            display: none;
+            z-index: 1000;
+            transition: transform 0.3s;
+        }
+        
+        #scrollTopBtn:hover {
+            transform: scale(1.1);
+        }
+        /* استجابة الشاشات الصغيرة */
+        
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 2.2em;
+            }
+            .section {
+                max-width: 95%;
+            }
+            .controls {
+                gap: 8px;
+            }
+            .control-btn {
+                padding: 10px 15px;
+                font-size: 0.9em;
+                min-width: 120px;
+            }
+            .action-btns {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .action-btns a {
+                width: 70%;
+                margin: 0 auto;
+            }
+            #scrollTopBtn {
+                left: 10px;
+                bottom: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="loading-screen" id="loading">
+        <div class="spinner"></div>
+        <p>جاري تحميل الصوتيات...</p>
+    </div>
+
+    <div class="header">
+        <h1>🎧 مكتبة الصوتيات</h1>
+    </div>
+
+    <div class="controls">
+        <button class="control-btn" onclick="playAll()"><i class="fas fa-play"></i> تشغيل الكل</button>
+        <button class="control-btn" onclick="pauseAll()"><i class="fas fa-pause"></i> إيقاف الكل</button>
+        <button class="control-btn" onclick="muteAll()"><i class="fas fa-volume-mute"></i> كتم الكل</button>
+        <button class="control-btn" onclick="unmuteAll()"><i class="fas fa-volume-up"></i> إلغاء الكتم</button>
+        <button class="control-btn" onclick="loopToggle()"><i class="fas fa-redo-alt"></i> تكرار الكل</button>
+        <button class="control-btn" onclick="playPrev()"><i class="fas fa-backward"></i> السابق</button>
+        <button class="control-btn" onclick="playNext()"><i class="fas fa-forward"></i> التالي</button>
+        <button class="control-btn" onclick="setSleepTimer()"><i class="fas fa-clock"></i> مؤقت النوم</button>
+    </div>
+
+    <div class="sections">
+        <div class="section audio-section">
+            <h3>الحب أنتَ و لولا</h3>
+            <audio controls>
+                <source src="1.mp3" type="audio/mp3">
+                متصفحك لا يدعم عنصر الصوت.
+            </audio>
+        </div>
+        <div class="section audio-section">
+            <h3>ما ماتت من مرض</h3>
+            <audio controls>
+                <source src="2.mp3" type="audio/mp3">
+                متصفحك لا يدعم عنصر الصوت.
+            </audio>
+        </div>
+        <div class="section audio-section">
+            <h3>زيارة عاشوراء</h3>
+            <audio controls>
+                <source src="3.mp3" type="audio/mp3">
+                متصفحك لا يدعم عنصر الصوت.
+            </audio>
+        </div>
+        <div class="section audio-section">
+            <h3>الوداع الوداع</h3>
+            <audio controls>
+                <source src="4.mp3" type="audio/mp3">
+                متصفحك لا يدعم عنصر الصوت.
+            </audio>
+        </div>
+        <div class="section audio-section">
+            <h3>رحلة </h3>
+            <audio controls>
+                <source src="5.mp3" type="audio/mp3">
+                متصفحك لا يدعم عنصر الصوت.
+            </audio>
+        </div>
+        <div class="section audio-section">
+            <h3>مثل طبع النسر طبعي </h3>
+            <audio controls>
+                <source src="6.mp3" type="audio/mp3">
+                متصفحك لا يدعم عنصر الصوت.
+            </audio>
+        </div>
+        <div class="section audio-section">
+            <h3>شرط الولاية</h3>
+            <audio controls>
+                <source src="7.mp3" type="audio/mp3">
+                متصفحك لا يدعم عنصر الصوت.
+            </audio>
+        </div>
+        <div class="section audio-section">
+            <h3>دعاء الفرج</h3>
+            <audio controls>
+                <source src="8.mp3" type="audio/mp3">
+                متصفحك لا يدعم عنصر الصوت.
+            </audio>
+        </div>
+        <div class="section audio-section">
+            <h3>مشهد حلم</h3>
+            <audio controls>
+                <source src="9.mp3" type="audio/mp3">
+                متصفحك لا يدعم عنصر الصوت.
+            </audio>
+        </div>
+    </div>
+
+    <div class="action-btns">
+        <a class="back-btn" href="index.html"><i class="fas fa-home"></i> الرجوع للصفحة الرئيسية</a>
+        <a class="telegram-btn" href="https://t.me/+WJn_Xof6aFNkMmEy" target="_blank">
+            <i class="fab fa-telegram-plane"></i> قناة تلجرام
+        </a>
+    </div>
+
+    <button id="scrollTopBtn" onclick="scrollToTop()"><i class="fas fa-arrow-up"></i></button>
+
+    <div class="footer">
+        &copy; 2025 نهج الشيعة - جميع الحقوق محفوظة
+    </div>
+
+    <script>
+        // شاشة التحميل
+        window.addEventListener('load', () => {
+            const loading = document.getElementById('loading');
+            loading.style.opacity = '0';
+            setTimeout(() => loading.style.display = 'none', 500);
+        });
+
+        // التحكم بالصوتيات
+        const audioSections = document.querySelectorAll('.audio-section');
+        const audios = document.querySelectorAll('.audio-section audio');
+        let currentIndex = 0;
+        let isLooping = false; // متغير لحالة التكرار
+
+        // دالة لإزالة فئة active من كل المقاطع
+        function removeActiveClass() {
+            audioSections.forEach(section => section.classList.remove('active'));
+        }
+
+        // تحديث الفئة النشطة للمقطع الذي يعمل
+        audios.forEach((audio, index) => {
+            audio.addEventListener('play', () => {
+                removeActiveClass();
+                audioSections[index].classList.add('active');
+                currentIndex = index;
+            });
+            audio.addEventListener('pause', () => {
+                // لا نزيل فئة active عند الإيقاف المؤقت
+            });
+            audio.addEventListener('ended', () => {
+                audioSections[index].classList.remove('active');
+                if (!isLooping) {
+                    playNext(); // تشغيل التالي إذا لم يكن التكرار مفعلاً
+                } else {
+                    audioSections[index].classList.add('active'); // إعادة وضع Active إذا تكرر نفس المقطع
+                }
+            });
+        });
+
+        function playAll() {
+            pauseAll(); // إيقاف أي مقطع يعمل قبل بدء تشغيل الكل
+            audios.forEach(audio => {
+                audio.play().catch(e => console.error("Play failed:", e));
+            });
+            currentIndex = 0;
+            removeActiveClass();
+            audioSections[currentIndex].classList.add('active');
+        }
+
+        function pauseAll() {
+            audios.forEach(audio => audio.pause());
+            removeActiveClass();
+        }
+
+        function muteAll() {
+            audios.forEach(audio => audio.muted = true);
+        }
+
+        function unmuteAll() {
+            audios.forEach(audio => audio.muted = false);
+        }
+
+        function loopToggle() {
+            isLooping = !isLooping;
+            audios.forEach(audio => audio.loop = isLooping);
+            alert(`تم ${isLooping ? 'تفعيل' : 'إلغاء'} التكرار لجميع الصوتيات.`);
+        }
+
+        function playNext() {
+            audios[currentIndex].pause();
+            removeActiveClass();
+            currentIndex = (currentIndex + 1) % audios.length;
+
+            // إعادة تعيين موضع المقطع الجديد
+            audios[currentIndex].currentTime = 0;
+            audios[currentIndex].play().catch(e => console.error("Play next failed:", e));
+            audioSections[currentIndex].classList.add('active');
+
+            // الصعود التلقائي إلى المقطع الجديد (اختياري)
+            audioSections[currentIndex].scrollIntoView({
+                behavior: 'smooth',
+                block: 'center'
+            });
+        }
+
+        function playPrev() {
+            audios[currentIndex].pause();
+            removeActiveClass();
+            currentIndex = (currentIndex - 1 + audios.length) % audios.length;
+
+            // إعادة تعيين موضع المقطع الجديد
+            audios[currentIndex].currentTime = 0;
+            audios[currentIndex].play().catch(e => console.error("Play previous failed:", e));
+            audioSections[currentIndex].classList.add('active');
+
+            // الصعود التلقائي إلى المقطع الجديد (اختياري)
+            audioSections[currentIndex].scrollIntoView({
+                behavior: 'smooth',
+                block: 'center'
+            });
+        }
+
+        // زر الصعود للأعلى
+        window.onscroll = () => {
+            document.getElementById('scrollTopBtn').style.display = window.scrollY > 300 ? 'block' : 'none';
+        };
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // مؤقت النوم
+        function setSleepTimer() {
+            const minutes = prompt('أدخل عدد الدقائق لإيقاف الصوتيات (0 للإلغاء):');
+            const time = parseInt(minutes);
+
+            // إزالة أي مؤقت موجود
+            clearTimeout(window.sleepTimer);
+
+            if (!isNaN(time) && time > 0) {
+                window.sleepTimer = setTimeout(() => {
+                    pauseAll();
+                    alert('تم إيقاف الصوتيات بسبب انتهاء المؤقت.');
+                }, time * 60000);
+                alert(`تم ضبط المؤقت على ${time} دقائق.`);
+            } else if (time === 0) {
+                alert('تم إلغاء مؤقت النوم.');
+            } else {
+                alert('يرجى إدخال عدد دقائق صحيح!');
+            }
+        }
+    </script>
+</body>
+
+</html>

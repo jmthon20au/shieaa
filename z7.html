@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💚 زيارة أمين الله</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        /* إعدادات عامة */
+        
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background: #1e1e2f;
+            color: #ddd;
+            font-family: 'Tajawal', sans-serif;
+            text-align: center;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            padding-top: 0;
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+        
+        body.loaded {
+            opacity: 1;
+        }
+        /* رأس الصفحة */
+        
+        .header {
+            padding: 30px 20px 20px;
+            background: linear-gradient(135deg, #161625, #2d2d44);
+            border-bottom: 5px solid #00a86b;
+            /* أخضر زمردي */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            margin-bottom: 30px;
+        }
+        
+        .header h2 {
+            margin: 0;
+            font-size: 2.5em;
+            color: #00a86b;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+            font-weight: 800;
+        }
+        /* حاوية المحتوى الرئيسي */
+        
+        .main-content {
+            flex-grow: 1;
+            padding: 20px;
+            max-width: 850px;
+            margin: 0 auto;
+        }
+        /* التقويم */
+        
+        .calendar {
+            margin: 20px auto 40px;
+            padding: 15px;
+            font-size: 1.1em;
+            color: #fff;
+            border-radius: 10px;
+            background-color: rgba(0, 168, 107, 0.15);
+            /* لون أخضر فاتح */
+            max-width: 90%;
+            line-height: 1.7;
+        }
+        /* صندوق الدعاء العام */
+        
+        .dua-box {
+            background: #25253e;
+            border: 2px solid #00a86b;
+            /* حدود خضراء */
+            border-radius: 15px;
+            padding: 30px 25px;
+            margin: 25px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            text-align: justify;
+        }
+        /* العناوين الداخلية للتقسيم */
+        
+        .dua-box h3 {
+            color: #f1c40f;
+            /* لون ذهبي */
+            font-size: 1.8em;
+            margin-top: 30px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(0, 168, 107, 0.4);
+            text-align: right;
+            font-weight: 700;
+        }
+        /* تنسيق نص الزيارة لزيادة القراءة */
+        
+        .dua-box p {
+            font-size: 1.2em;
+            line-height: 2.2em;
+            margin: 20px 0;
+            padding: 0 10px;
+            color: #f0f0f0;
+            text-align: justify;
+        }
+        /* تلوين إرشادات النص */
+        
+        .dua-instruction {
+            display: block;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            color: #2ecc71;
+            /* أخضر ساطع للإرشادات */
+            font-size: 1.1em;
+            font-style: italic;
+            border-right: 3px solid #2ecc71;
+            padding-right: 10px;
+            text-align: right;
+        }
+        /* أزرار التنقل */
+        
+        .nav-buttons {
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+        
+        .back-btn,
+        .home-btn {
+            margin: 10px;
+            text-decoration: none;
+            color: #fff;
+            background: #00a86b;
+            /* لون أخضر زمردي */
+            padding: 14px 28px;
+            border-radius: 50px;
+            font-size: 1.2em;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            display: inline-block;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .back-btn:hover {
+            background-color: #008f5a;
+        }
+        
+        .home-btn {
+            background-color: #5d5d81;
+            color: #fff;
+        }
+        
+        .home-btn:hover {
+            background-color: #4a4a6b;
+        }
+        /* تذييل الصفحة */
+        
+        footer {
+            margin-top: auto;
+            padding: 15px 0;
+            background-color: #161625;
+            color: #888;
+            font-size: 0.9em;
+            border-top: 1px solid #444;
+        }
+        
+        footer a {
+            color: #00a86b;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body class="hidden">
+
+    <div class="header">
+        <h2>💚 زيارة أمين الله</h2>
+        <h4 style="color: #ccc; margin-top: 5px;">تزار بها مراقد الأئمة عليهم السلام</h4>
+    </div>
+
+    <div class="main-content">
+
+        <div class="calendar" id="calendar">
+            جاري محاولة تحميل التاريخ...
+        </div>
+
+        <div class="dua-box">
+            <h3 style="margin-top: 0;"><i class="fa-solid fa-handshake"></i> السلام والشهادة بالأمانة</h3>
+            <p class="dua-instruction">
+                تقف عند القبر وتقول:
+            </p>
+            <p>
+                السَّلاَمُ عَلَيْكَ يَا أَمِينَ اللّٰهِ فِي أَرْضِهِ، وَحُجَّتَهُ عَلَىٰ عِبَادِهِ، السَّلاَمُ عَلَيْكَ يَا أَمِيرَ الْمُؤْمِنِينَ. أَشْهَدُ أَنَّكَ جَاهَدْتَ فِي اللّٰهِ حَقَّ جِهَادِهِ، وَعَمِلْتَ بِكِتَابِهِ، وَاتَّبَعْتَ سُنَنَ نَبِيِّهِ صَلَّى اللّٰهُ
+                عَلَيْهِ وَآلِهِ، حَتَّىٰ دَعَاكَ اللّٰهُ إِلَىٰ جِوَارِهِ، وَقَبَضَكَ إِلَيْهِ بِاخْتِيَارِهِ، وَأَلْزَمَ أَعْدَاءَكَ الْحُجَّةَ مَعَ مَا لَكَ مِنَ الْحُجَجِ الْبَالِغَةِ عَلَىٰ جَمِيعِ خَلْقِهِ.
+            </p>
+            <p>
+                اللّٰهُمَّ فَاجْعَلْ نَفْسِي مُطْمَئِنَّةً بِقَدَرِكَ، رَاضِيَةً بِقَضَائِكَ، مُولَعَةً بِذِكْرِكَ وَدُعَائِكَ، مُحِبَّةً لِصَفْوَةِ أَوْلِيَائِكَ، مَحْبُوبَةً فِي أَرْضِكَ وَسَمَائِكَ، صَابِرَةً عَلَىٰ نُزُولِ بَلائِكَ، شَاكِرَةً لِفَوَاضِلِ نَعْمَائِكَ،
+                ذَاكِرَةً لِسَوَابِغِ آلائِكَ، مُشْتَاقَةً إِلَىٰ فَرْحَةِ لِقَائِكَ، مُتَزَوِّدَةً التَّقْوَىٰ لِيَوْمِ جَزَائِكَ، مُسْتَنَّةً بِسُنَنِ أَوْلِيَائِكَ، مُفَارِقَةً لِأَخْلاَقِ أَعْدَائِكَ، مَشْغُولَةً عَنِ الدُّنْيَا بِحَمْدِكَ وَثَنَائِكَ.
+            </p>
+
+            <h3><i class="fa-solid fa-graduation-cap"></i> دعاء طلب الخصال الحميدة</h3>
+            <p class="dua-instruction">
+                (هنا الدعاء العظيم المأثور بطلب الخصال الحميدة):
+            </p>
+            <p>
+                اللّٰهُمَّ إِنَّ قُلُوبَ الْمُخْبِتِينَ إِلَيْكَ وَالِهَةٌ، وَسُبُلَ الرَّاغِبِينَ إِلَيْكَ شَارِعَةٌ، وَأَعْلاَمَ الْقَاصِدِينَ إِلَيْكَ وَاضِحَةٌ، وَأَفْئِدَةَ الْعَارِفِينَ مِنْكَ فَازِعَةٌ، وَأَصْوَاتَ الدَّاعِينَ إِلَيْكَ صَاعِدَةٌ، وَأَبْوَابَ الْإِجَابَةِ
+                لَهُمْ مُفَتَّحَةٌ، وَدَعْوَةَ مَنْ نَاجَاكَ مُسْتَجَابَةٌ، وَتَوْبَةَ مَنْ أَنَابَ إِلَيْكَ مَقْبُولَةٌ، وَالْعَبْرَةَ عَلَىٰ مَنْ بَكَىٰ مِنْ خَوْفِكَ مَرْحُومَةٌ، وَالإِغَاثَةَ لِمَنِ اسْتَغَاثَ بِكَ مَوْجُودَةٌ، وَالْإِعَانَةَ لِمَنِ
+                اسْتَعَانَ بِكَ مَبْذُولَةٌ.
+            </p>
+            <p>
+                اللّٰهُمَّ فَاجْعَلْنِي مِنْ تِلْكَ الْعِبَادِ الَّذِينَ نَجَحَتْ فِيهِمْ دَعْوَتُكَ، وَقَبِلْتَ مِنْهُمْ مُنَاجَاتَهُمْ، يَا أَرْحَمَ الرَّاحِمِينَ.
+            </p>
+
+            <h3><i class="fa-solid fa-user-check"></i> الختام ودعاء الإمام السجاد (ع)</h3>
+            <p class="dua-instruction">
+                يُستحب أن تضع خدك الأيمن على القبر وتقول:
+            </p>
+            <p>
+                اللّٰهُمَّ إِنِّي أَسْأَلُكَ بِمَعَاقِدِ الْعِزِّ مِنْ عَرْشِكَ، وَمُنْتَهَىٰ الرَّحْمَةِ مِنْ كِتَابِكَ، وَبِاسْمِكَ الأَعْظَمِ، وَكَلِمَاتِكَ التَّامَّةِ الَّتِي تَمَّتْ صِدْقاً وَعَدْلاً، أَنْ تُصَلِّيَ عَلَىٰ مُحَمَّدٍ وَآلِ مُحَمَّدٍ، وَأَنْ تَجْعَلَ
+                فَرَجِي مَعَ فَرَجِ آلِ مُحَمَّدٍ، بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيمِ.
+            </p>
+            <p>
+                (ثم ترفع خدك وتضعه على خدك الأيسر وتقول):
+            </p>
+            <p>
+                اللّٰهُمَّ ارْزُقْنِي الْإِخْلاَصَ فِي الْعَمَلِ، وَالْإِجَابَةَ فِي الدُّعَاءِ، وَالْعِصْمَةَ مِنَ الْخَطَإِ وَالزَّلَلِ، وَالْقَبُولَ فِي الْقَوْلِ وَالْفِعَلِ، وَالْحِفْظَ فِي اللَّيْلِ وَالنَّهَارِ، وَالنَّجَاةَ فِي الْخَوْفِ وَالْخَطَرِ، وَالْبَرَاءَةَ
+                مِنَ النَّارِ. يَا أَرْحَمَ الرَّاحِمِينَ.
+            </p>
+            <p class="source">
+                المصدر: مفاتيح الجنان، ومذكورة في كامل الزيارات برواية الإمام السجاد (ع).
+            </p>
+        </div>
+
+
+        <div class="nav-buttons">
+            <a href="ziyarat.html" class="back-btn"><i class="fa-solid fa-list-ul"></i> الرجوع لقسم الزيارات</a>
+            <a href="index.html" class="home-btn"><i class="fa-solid fa-house"></i> الذهاب للصفحة الرئيسية</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>حقوق النشر &copy; <a href="#">موقع نهج الشيعة</a> 2025</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.body.classList.add('loaded');
+        });
+
+        window.onload = function() {
+            const calendarDiv = document.getElementById('calendar');
+            const today = new Date();
+
+            // 1. حساب وعرض التاريخ المحلي الفوري (لتحميل سريع)
+            const gregorianDate = today.toLocaleDateString('ar-EG', {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+            const hijriDateFallback = new Intl.DateTimeFormat('ar-SA', {
+                calendar: 'islamic',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            }).format(today);
+
+            // العرض الفوري للتاريخ التقديري
+            calendarDiv.innerHTML =
+                `📆 التاريخ الميلادي: ${gregorianDate} <br> 
+                🕌 التاريخ الهجري (تقديري): <strong>${hijriDateFallback}</strong> <br>
+                <small>جاري محاولة تحديث التاريخ من مصدره...</small>`;
+
+
+            // 2. محاولة جلب التاريخ من موقع السيستاني في الخلفية
+            const proxyUrl = 'https://api.allorigins.win/get?url=';
+            const targetUrl = encodeURIComponent('https://www.sistani.org');
+
+            fetch(proxyUrl + targetUrl)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('فشل الاتصال بالخادم الوسيط');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    const htmlContent = data.contents;
+                    // التعبير النمطي للبحث عن التاريخ الهجري
+                    const regex = /style="margin-left:9px;">([^<]+)<\/span>/;
+                    const match = htmlContent.match(regex);
+
+                    let hijriDateFromSistani;
+
+                    if (match && match[1]) {
+                        // 3. تحديث التاريخ بمجرد الحصول على التاريخ الصحيح
+                        hijriDateFromSistani = match[1].trim();
+
+                        calendarDiv.innerHTML =
+                            `📆 التاريخ الميلادي: ${gregorianDate} <br> 
+                            🕌 التاريخ الهجري (المرجع): <strong>${hijriDateFromSistani}</strong>`;
+                    } else {
+                        throw new Error('لم يتم العثور على التاريخ بالصيغة المحددة.');
+                    }
+                })
+                .catch(error => {
+                    console.error("خطأ في جلب التاريخ:", error);
+                    // في حال الفشل، نظهر رسالة خطأ صغيرة أسفل التاريخ التقديري
+                    calendarDiv.innerHTML =
+                        `📆 التاريخ الميلادي: ${gregorianDate} <br> 
+                        🕌 الهجري (تقديري): <strong>${hijriDateFallback}</strong> <br>
+                        <small style="color:#ff6666; display:block; margin-top:5px;">⚠️ فشل جلب تاريخ المرجع.</small>`;
+                });
+        };
+    </script>
+</body>
+
+</html>

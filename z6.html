@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🏴 زيارة عاشوراء</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+    /* إعدادات عامة */
+        
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background: #151515;
+            /* خلفية داكنة جداً للحزن */
+            color: #ddd;
+            font-family: 'Tajawal', sans-serif;
+            text-align: center;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            padding-top: 0;
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+        
+        body.loaded {
+            opacity: 1;
+        }
+        /* رأس الصفحة */
+        
+        .header {
+            padding: 30px 20px 20px;
+            background: linear-gradient(135deg, #101010, #222222);
+            border-bottom: 5px solid #a30000;
+            /* أحمر داكن (لون التضحية) */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+            margin-bottom: 30px;
+        }
+        
+        .header h2 {
+            margin: 0;
+            font-size: 2.5em;
+            color: #a30000;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+            font-weight: 800;
+        }
+        
+        .header h4 {
+            color: #ccc;
+        }
+        /* حاوية المحتوى الرئيسي */
+        
+        .main-content {
+            flex-grow: 1;
+            padding: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        /* التقويم */
+        
+        .calendar {
+            margin: 20px auto 40px;
+            padding: 15px;
+            font-size: 1.1em;
+            color: #fff;
+            border-radius: 10px;
+            background-color: rgba(163, 0, 0, 0.15);
+            /* لون التقويم أحمر فاتح */
+            max-width: 90%;
+            line-height: 1.7;
+        }
+        /* صندوق الدعاء العام */
+        
+        .dua-box {
+            background: #202020;
+            border: 2px solid #a30000;
+            /* حدود حمراء داكنة */
+            border-radius: 15px;
+            padding: 30px 25px;
+            margin: 25px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            text-align: justify;
+        }
+        /* العناوين الداخلية للتقسيم */
+        
+        .dua-box h3 {
+            color: #f1c40f;
+            /* لون ذهبي لتسليط الضوء */
+            font-size: 1.8em;
+            margin-top: 30px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #a30000;
+            text-align: right;
+            font-weight: 700;
+        }
+        /* تنسيق نص الزيارة لزيادة القراءة */
+        
+        .dua-box p {
+            font-size: 1.25em;
+            line-height: 2.3em;
+            margin: 25px 0;
+            padding: 0 10px;
+            color: #f5f5f5;
+            text-align: justify;
+        }
+        /* تلوين إرشادات النص */
+        
+        .dua-instruction {
+            display: block;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            color: #2ecc71;
+            /* أخضر للإرشادات */
+            font-size: 1.1em;
+            font-style: italic;
+            border-right: 3px solid #2ecc71;
+            padding-right: 10px;
+            text-align: right;
+        }
+        /* تظليل فقرات اللعن والتبري (لون أحمر خفيف) */
+        
+        .la'an {
+ background-color: rgba(163, 0, 0, 0.1);
+        border-right: 5px solid #a30000;
+        padding-right: 15px;
+    }
+    /* تظليل فقرات طلب الأجر (لون ذهبي خفيف) */
+    .thawab {
+        background-color: rgba(241, 196, 15, 0.1);
+        border-left: 5px solid #f1c40f;
+        padding-left: 15px;
+    }
+    /* أزرار التنقل */
+    .nav-buttons {
+        margin-top: 40px;
+        margin-bottom: 20px;
+    }
+    .back-btn,
+    .home-btn {
+        margin: 10px;
+        text-decoration: none;
+        color: #fff;
+        background: #a30000;
+        /* لون أحمر للتضحية */
+        
+        padding: 14px 28px;
+        border-radius: 50px;
+        font-size: 1.2em;
+        font-weight: 700;
+        transition: all 0.3s ease;
+        display: inline-block;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+    .back-btn:hover {
+        background-color: #8f0000;
+    }
+    .home-btn {
+        background-color: #5d5d81;
+        color: #fff;
+    }
+    .home-btn:hover {
+        background-color: #4a4a6b;
+    }
+    /* تذييل الصفحة */
+    footer {
+        margin-top: auto;
+        padding: 15px 0;
+        background-color: #101010;
+        color: #888;
+        font-size: 0.9em;
+        border-top: 1px solid #444;
+    }
+    footer a {
+        color: #a30000;
+        text-decoration: none;
+    }
+    </style>
+</head>
+
+<body class="hidden">
+
+    <div class="header">
+        <h2>🏴 زيارة عاشوراء</h2>
+        <h4>مفتاح الجنان في حقيقة سيد الشهداء عليه السلام</h4>
+    </div>
+
+    <div class="main-content">
+
+        <div class="calendar" id="calendar">
+            جاري محاولة تحميل التاريخ...
+        </div>
+
+        <div class="dua-box">
+            <h3 style="margin-top: 0;"><i class="fa-solid fa-peace"></i> السلام عليهم والمواساة</h3>
+            <p class="dua-instruction">
+                يُستحب أن تقف مستقبل القبلة وتومئ إلى قبر الإمام الحسين (ع) وتقول:
+            </p>
+            <p>
+                السَّلاَمُ عَلَيْكَ يَا أَبَا عَبْدِ اللّٰهِ، السَّلاَمُ عَلَيْكَ يَا ابْنَ رَسُولِ اللّٰهِ، السَّلاَمُ عَلَيْكَ يَا خِيرَةَ اللّٰهِ وَابْنَ خِيرَتِهِ، السَّلاَمُ عَلَيْكَ يَا ابْنَ أَمِيرِ الْمُؤْمِنِينَ وَابْنَ سَيِّدِ الْوَصِيِّينَ. السَّلاَمُ عَلَيْكَ
+                يَا ابْنَ فَاطِمَةَ سَيِّدَةِ نِساءِ الْعَالَمِينَ، السَّلاَمُ عَلَيْكَ يَا ثَارَ اللّٰهِ وَابْنَ ثَارِهِ وَالْوِتْرَ الْمَوْتُورَ. السَّلاَمُ عَلَيْكَ وَعَلَى الأَرْوَاحِ الَّتِي حَلَّتْ بِفِنائِكَ، عَلَيْكُمْ مِنِّي جَمِيعاً سَلاَمُ
+                اللّٰهِ أَبَداً مَا بَقِيتُ وَبَقِيَ اللَّيْلُ وَالنَّهَارُ.
+            </p>
+            <p>
+                يَا أَبَا عَبْدِ اللّٰهِ، لَقَدْ عَظُمَتِ الرَّزِيَّةُ وَجَلَّتْ وَعَظُمَتِ الْمُصِيبَةُ بِكَ عَلَيْنَا وَعَلَى جَمِيعِ أَهْلِ الإِسْلاَمِ وَجَلَّتْ وَعَظُمَتْ مُصِيبَتُكَ فِي السَّمَاوَاتِ عَلَى جَمِيعِ أَهْلِ السَّمَاوَاتِ.
+            </p>
+
+            <h3><i class="fa-solid fa-mask"></i> التبري واللعن على الظالمين</h3>
+            <p class="la'an">
+                فَلَعَنَ اللّٰهُ أُمَّةً أَسَّسَتْ أَسَاسَ الظُّلْمِ وَالْجَوْرِ عَلَيْكُمْ أَهْلَ الْبَيْتِ، وَلَعَنَ اللّٰهُ أُمَّةً دَفَعَتْكُمْ عَنْ مَقَامِكُمْ وَأَزَالَتْكُمْ عَنْ مَرَاتِبِكُمُ الَّتِي رَتَّبَكُمُ اللّٰهُ فِيهَا. وَلَعَنَ اللّٰهُ أُمَّةً قَتَلَتْكُمْ،
+                وَلَعَنَ اللّٰهُ الْمُمَهِّدِينَ لَهُمْ بِالتَّمْكِينِ مِنْ قِتَالِكُمْ. بَرِئْتُ إِلَى اللّٰهِ وَإِلَيْكُمْ مِنْهُمْ وَمِنْ أَشْيَاعِهِمْ وَأَتْبَاعِهِمْ وَأَوْلِيَائِهِمْ.
+            </p>
+
+            <h3><i class="fa-solid fa-hands-praying"></i> طلب البراءة والقرب إلى الله</h3>
+            <p class="thawab">
+                يَا أَبَا عَبْدِ اللّٰهِ، إِنِّي أَتَقَرَّبُ إِلَى اللّٰهِ وَإِلَى رَسُولِهِ وَإِلَى أَمِيرِ الْمُؤْمِنِينَ وَإِلَى فَاطِمَةَ وَإِلَى الْحَسَنِ وَإِلَيْكَ بِمُوَالاَتِكَ وَبِالْبَرَاءَةِ مِمَّنْ قَاتَلَكَ وَنَصَبَ لَكَ الْحَرْبَ وَبِالْبَرَاءَةِ مِمَّنْ
+                أَسَّسَ أَسَاسَ الظُّلْمِ وَالْجَوْرِ عَلَيْكُمْ وَأَبْرَأُ إِلَى اللّٰهِ وَإِلَى رَسُولِهِ مِمَّنْ أَسَّسَ أَسَاسَ ذَلِكَ وَبَنَى عَلَيْهِ بُنْيَانَهُ وَجَرَى فِي ظُلْمِهِ وَجَوْرِهِ عَلَيْكُمْ وَعَلَى أَشْيَاعِكُمْ.
+            </p>
+            <p>
+                بَرِئْتُ إِلَى اللّٰهِ وَإِلَيْكُمْ مِنْهُمْ وَأَتَقَرَّبُ إِلَى اللّٰهِ ثُمَّ إِلَيْكُمْ بِمُوَالاَتِكُمْ وَمُوَالاَةِ وَلِيِّكُمْ وَبِالْبَرَاءَةِ مِنْ أَعْدَائِكُمْ وَالنَّاصِبِينَ لَكُمُ الْحَرْبَ وَبِالْبَرَاءَةِ مِنْ أَشْيَاعِهِمْ وَأَتْبَاعِهِمْ.
+            </p>
+
+            <h3><i class="fa-solid fa-rotate-right"></i> تكرار اللعن والسلام (100 مرة)</h3>
+            <p class="dua-instruction">
+                ثم تقول مائة (100) مرة:
+            </p>
+            <p class="la'an">
+                اللّٰهُمَّ الْعَنْ أَوَّلَ ظَالِمٍ ظَلَمَ حَقَّ مُحَمَّدٍ وَآلِ مُحَمَّدٍ وَآخِرَ تَابِعٍ لَهُ عَلَى ذَلِكَ. اللّٰهُمَّ الْعَنِ الْعِصَابَةَ الَّتِي جَاهَدَتِ الْحُسَيْنَ وَشَايَعَتْ وَبَايَعَتْ وَتَابَعَتْ عَلَى قَتْلِهِ. اللّٰهُمَّ الْعَنْهُمْ جَمِيعاً.
+            </p>
+            <p class="dua-instruction">
+                ثم تقول مائة (100) مرة:
+            </p>
+            <p class="thawab">
+                السَّلاَمُ عَلَيْكَ يَا أَبَا عَبْدِ اللّٰهِ وَعَلَى الأَرْوَاحِ الَّتِي حَلَّتْ بِفِنَائِكَ عَلَيْكَ مِنِّي سَلاَمُ اللّٰهِ أَبَداً مَا بَقِيتُ وَبَقِيَ اللَّيْلُ وَالنَّهَارُ وَلاَ جَعَلَهُ اللّٰهُ آخِرَ الْعَهْدِ مِنِّي لِزِيَارَتِكُمْ. السَّلاَمُ
+                عَلَى الْحُسَيْنِ وَعَلَى عَلِيِّ بْنِ الْحُسَيْنِ وَعَلَى أَوْلاَدِ الْحُسَيْنِ وَعَلَى أَصْحَابِ الْحُسَيْنِ.
+            </p>
+
+            <h3><i class="fa-solid fa-heart-circle-check"></i> الدعاء بطلب الثبات والمقام المحمود</h3>
+            <p class="dua-instruction">
+                ثم تقول:
+            </p>
+            <p class="thawab">
+                اللّٰهُمَّ خُصَّ أَنْتَ أَوَّلَ ظَالِمٍ بِاللَّعْنِ مِنِّي وَابْدَأْ بِهِ أَوَّلاً ثُمَّ الْعَنِ الثَّانِيَ وَالثَّالِثَ وَالرَّابِعَ. اللّٰهُمَّ الْعَنْ يَزِيدَ خامِساً وَالْعَنْ عُبَيْدَ اللّٰهِ بْنَ زِيَادٍ وَابْنَ مَرْجَانَةَ وَعُمَرَ بْنَ سَعْدٍ
+                وَشِمْراً وَآلَ أَبِي سُفْيَانَ وَآلَ زِيَادٍ وَآلَ مَرْوَانَ إِلَى يَوْمِ الْقِيَامَةِ.
+            </p>
+            <p>
+                اللّٰهُمَّ اجْعَلْ مَحْيَايَ مَحْيَا مُحَمَّدٍ وَآلِ مُحَمَّدٍ وَمَمَاتِي مَمَاتَ مُحَمَّدٍ وَآلِ مُحَمَّدٍ.
+            </p>
+            <p class="thawab">
+                اللّٰهُمَّ إِنَّ هَذَا يَوْمٌ تَبَرَّكَتْ بِهِ بَنُو أُمَيَّةَ وَابْنُ آكِلَةِ الأَكْبَادِ اللَّعِينُ بْنُ اللَّعِينِ عَلَى لِسَانِكَ وَلِسَانِ نَبِيِّكَ صَلَّى اللّٰهُ عَلَيْهِ وَآلِهِ فِي كُلِّ مَوْطِنٍ وَمَوْقِفٍ وَقَفَ فِيهِ نَبِيُّكَ صَلَّى اللّٰهُ
+                عَلَيْهِ وَآلِهِ. اللّٰهُمَّ الْعَنْ أَبَا سُفْيَانَ وَمُعَاوِيَةَ وَيَزِيدَ بْنَ مُعَاوِيَةَ عَلَيْهِمْ مِنْكَ اللَّعْنَةُ أَبَدَ الآبِدِينَ.
+            </p>
+            <p>
+                وَهَذَا يَوْمٌ فَرِحَتْ بِهِ آلُ زِيَادٍ وَآلُ مَرْوَانَ بِقَتْلِهِمُ الْحُسَيْنَ صَلَوَاتُ اللّٰهِ عَلَيْهِ. اللّٰهُمَّ فَضَاعِفْ عَلَيْهِمُ اللَّعْنَ مِنْكَ وَالْعَذَابَ الأَلِيمَ.
+            </p>
+
+            <h3><i class="fa-solid fa-user-plus"></i> دعاء الالحاق بالشهداء</h3>
+            <p class="dua-instruction">
+                ثم قل:
+            </p>
+            <p class="thawab">
+                اللّٰهُمَّ إِنِّي أَتَقَرَّبُ إِلَيْكَ فِي هَذَا الْيَوْمِ وَفِي مَوْقِفِي هَذَا وَأَيَّامِ حَيَاتِي بِالْبَرَاءَةِ مِنْهُمْ وَاللَّعْنَةِ عَلَيْهِمْ وَبِالْمُوَالاَةِ لِنَبِيِّكَ وَآلِ نَبِيِّكَ عَلَيْهِمُ السَّلاَمُ.
+            </p>
+            <p class="dua-instruction">
+                (ثم تسجد وتقول):
+            </p>
+            <p>
+                اللّٰهُمَّ لَكَ الْحَمْدُ حَمْدَ الشَّاكِرِينَ لَكَ عَلَى مُصَابِهِمْ. اَلْحَمْدُ لِلّٰهِ عَلَى عَظِيمِ رَزِيَّتِي. اللّٰهُمَّ ارْزُقْنِي شَفَاعَةَ الْحُسَيْنِ يَوْمَ الْوُرُودِ وَثَبِّتْ لِي قَدَمَ صِدْقٍ عِنْدَكَ مَعَ الْحُسَيْنِ وَأَصْحَابِ الْحُسَيْنِ
+                الَّذِينَ بَذَلُوا مُهَجَهُمْ دُونَ الْحُسَيْنِ عَلَيْهِ السَّلاَمُ.
+            </p>
+            <p class="source">
+                المصدر: مفاتيح الجنان.
+            </p>
+        </div>
+
+        <div class="nav-buttons">
+            <a href="ziyarat.html" class="back-btn"><i class="fa-solid fa-list-ul"></i> الرجوع لقسم الزيارات</a>
+            <a href="index.html" class="home-btn"><i class="fa-solid fa-house"></i> الذهاب للصفحة الرئيسية</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>حقوق النشر &copy; <a href="#">موقع نهج الشيعة</a> 2025</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.body.classList.add('loaded');
+        });
+
+        window.onload = function() {
+            const calendarDiv = document.getElementById('calendar');
+            const today = new Date();
+
+            // 1. حساب وعرض التاريخ المحلي الفوري (لتحميل سريع)
+            const gregorianDate = today.toLocaleDateString('ar-EG', {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+            const hijriDateFallback = new Intl.DateTimeFormat('ar-SA', {
+                calendar: 'islamic',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            }).format(today);
+
+            // العرض الفوري للتاريخ التقديري
+            calendarDiv.innerHTML =
+                `📆 التاريخ الميلادي: ${gregorianDate} <br> 
+                🕌 التاريخ الهجري (تقديري): <strong>${hijriDateFallback}</strong> <br>
+                <small>جاري محاولة تحديث التاريخ من مصدره...</small>`;
+
+
+            // 2. محاولة جلب التاريخ من موقع السيستاني في الخلفية
+            const proxyUrl = 'https://api.allorigins.win/get?url=';
+            const targetUrl = encodeURIComponent('https://www.sistani.org');
+
+            fetch(proxyUrl + targetUrl)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('فشل الاتصال بالخادم الوسيط');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    const htmlContent = data.contents;
+                    // التعبير النمطي للبحث عن التاريخ الهجري
+                    const regex = /style="margin-left:9px;">([^<]+)<\/span>/;
+                    const match = htmlContent.match(regex);
+
+                    let hijriDateFromSistani;
+
+                    if (match && match[1]) {
+                        // 3. تحديث التاريخ بمجرد الحصول على التاريخ الصحيح
+                        hijriDateFromSistani = match[1].trim();
+
+                        calendarDiv.innerHTML =
+                            `📆 التاريخ الميلادي: ${gregorianDate} <br> 
+                            🕌 التاريخ الهجري (المرجع): <strong>${hijriDateFromSistani}</strong>`;
+                    } else {
+                        throw new Error('لم يتم العثور على التاريخ بالصيغة المحددة.');
+                    }
+                })
+                .catch(error => {
+                    console.error("خطأ في جلب التاريخ:", error);
+                    // في حال الفشل، نظهر رسالة خطأ صغيرة أسفل التاريخ التقديري
+                    calendarDiv.innerHTML =
+                        `📆 التاريخ الميلادي: ${gregorianDate} <br> 
+                        🕌 الهجري (تقديري): <strong>${hijriDateFallback}</strong> <br>
+                        <small style="color:#ff6666; display:block; margin-top:5px;">⚠️ فشل جلب تاريخ المرجع.</small>`;
+                });
+        };
+    </script>
+</body>
+
+</html>

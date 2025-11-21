@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔢 السبحة الإلكترونية (مفتوح)</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        /* إعدادات عامة */
+        
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background: #1e1e2f;
+            color: #fff;
+            font-family: 'Tajawal', sans-serif;
+            text-align: center;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        /* رأس الصفحة */
+        
+        .header {
+            padding: 20px 20px;
+            background: linear-gradient(135deg, #161625, #2d2d44);
+            border-bottom: 3px solid #f5b921;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            margin-bottom: 30px;
+        }
+        
+        .header h2 {
+            margin: 0;
+            font-size: 2.2em;
+            color: #f5b921;
+            text-shadow: 1px 1px 2px #000;
+        }
+        /* حاوية المحتوى الرئيسي */
+        
+        .main-content {
+            flex-grow: 1;
+            padding: 20px 10px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        /* العداد */
+        
+        .counter {
+            font-size: 5em;
+            font-weight: 800;
+            margin: 30px 0 10px;
+            color: #f5b921;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 10px 0;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            min-height: 70px;
+        }
+        /* أزرار الإجراءات (بدء، تسبيح، إعادة تعيين) */
+        
+        .btn {
+            padding: 15px 30px;
+            margin: 10px;
+            border: none;
+            border-radius: 50px;
+            /* شكل بيضاوي */
+            font-size: 1.3em;
+            cursor: pointer;
+            transition: all 0.3s;
+            color: #fff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            font-weight: 700;
+        }
+        
+        .btn-primary {
+            background-color: #007bff;
+        }
+        
+        .btn-primary:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+        /* زر التسبيح (الضغط المتكرر) - تم تصغيره الآن */
+        
+        #tasbeehSection .btn:first-of-type {
+            width: 90%;
+            max-width: 250px;
+            /* تم تصغير العرض الأقصى */
+            margin: 15px auto;
+            padding: 20px 20px;
+            /* تم تصغير الحشوة */
+            font-size: 1.8em;
+            /* تم تصغير حجم الخط */
+            background-color: #28a745;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        }
+        
+        #tasbeehSection .btn:active {
+            transform: scale(0.95);
+        }
+        /* زر إعادة التعيين - تم تصغيره الآن */
+        
+        .btn-reset {
+            background-color: #dc3545;
+            padding: 10px 25px;
+            /* تصغير حجم الحشوة ليتناسب مع كونه زر ثانوي */
+            font-size: 1.1em;
+            /* تصغير حجم الخط */
+            display: inline-block;
+        }
+        
+        .btn-reset:hover {
+            background-color: #c82333;
+            transform: translateY(-2px);
+        }
+        /* حقول الإدخال */
+        
+        .input-group {
+            text-align: right;
+            margin-bottom: 20px;
+        }
+        
+        .input-group label {
+            display: block;
+            font-size: 1.1em;
+            margin-bottom: 5px;
+            color: #aaa;
+        }
+        
+        .input-field {
+            padding: 12px 18px;
+            font-size: 1.2em;
+            border-radius: 10px;
+            border: 1px solid #444;
+            background-color: #2e2e47;
+            color: #fff;
+            width: 100%;
+            transition: all 0.3s;
+        }
+        
+        .input-field:focus {
+            border-color: #f5b921;
+            background-color: #3b3b56;
+            outline: none;
+        }
+        /* رسالة الاكتمال */
+        
+        .message {
+            color: #28a745;
+            font-size: 1.6em;
+            margin-top: 20px;
+            font-weight: 700;
+        }
+        /* زر الرجوع */
+        
+        .back-btn {
+            margin-top: 40px;
+            display: inline-block;
+            text-decoration: none;
+            color: #161625;
+            background: #f5b921;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-size: 1.2em;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .back-btn:hover {
+            background-color: #d89d1b;
+            transform: translateY(-2px);
+        }
+        /* التقويم */
+        
+        .calendar {
+            margin: 20px auto 30px;
+            padding: 15px;
+            font-size: 1em;
+            color: #fff;
+            border-radius: 10px;
+            background-color: rgba(245, 185, 33, 0.1);
+            max-width: 90%;
+            line-height: 1.6;
+        }
+        /* التذييل */
+        
+        footer {
+            margin-top: auto;
+            background-color: #161625;
+            color: #888;
+            padding: 15px 0;
+            font-size: 0.9em;
+            border-top: 1px solid #444;
+        }
+        
+        footer a {
+            color: #f5b921;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <h2>🔢 السبحة الإلكترونية (مفتوح)</h2>
+    </div>
+
+    <div class="main-content">
+
+        <div class="calendar" id="calendar">
+            جاري تحميل التقويم...
+        </div>
+
+        <div id="inputSection">
+            <div class="input-group">
+                <label for="tasbeehName">اسم التسبيح (مثال: أستغفر الله):</label>
+                <input type="text" id="tasbeehName" class="input-field" placeholder="أدخل اسم التسبيح" required>
+            </div>
+
+            <div class="input-group">
+                <label for="tasbeehCount">عدد التسبيحات المطلوب:</label>
+                <input type="number" id="tasbeehCount" class="input-field" placeholder="أدخل عدد التسبيحات" required>
+            </div>
+
+            <button class="btn btn-primary" onclick="startTasbeeh()">
+                <i class="fa-solid fa-play"></i> بدء التسبيح
+            </button>
+        </div>
+
+        <div id="tasbeehSection" style="display:none;">
+            <h3 id="tasbeehTitle">التسبيح: <span id="tasbeehDisplayName"></span></h3>
+            <div class="counter" id="openCounter">0</div>
+
+            <button class="btn" onclick="openTasbeeh()">اضغط للتسبيح</button>
+
+            <button class="btn btn-reset" onclick="resetOpenTasbeeh()" style="margin-top: 20px;">
+                <i class="fa-solid fa-arrows-rotate"></i> إيقاف وإعادة تعيين
+            </button>
+        </div>
+
+        <div class="message" id="completionMessage" style="display:none;"></div>
+
+        <div>
+            <a class="back-btn" href="tasbeeh.html">
+                <i class="fa-solid fa-arrow-right-from-bracket"></i> الرجوع لقائمة التسبيح
+            </a>
+        </div>
+    </div>
+
+    <footer>
+        <p>حقوق النشر &copy; <a href="#">نهج الشيعة</a> 2025</p>
+    </footer>
+
+    <script>
+        let openCount = 0;
+        let targetCount = 0;
+        let tasbeehName = "";
+
+        function startTasbeeh() {
+            tasbeehName = document.getElementById('tasbeehName').value.trim();
+            targetCount = parseInt(document.getElementById('tasbeehCount').value);
+
+            if (!tasbeehName || isNaN(targetCount) || targetCount <= 0) {
+                document.getElementById('completionMessage').innerText = "❌ يرجى إدخال اسم التسبيح وعدد صحيح وموجب.";
+                document.getElementById('completionMessage').style.display = 'block';
+                document.getElementById('completionMessage').style.color = '#dc3545';
+                return;
+            }
+
+            document.getElementById('completionMessage').style.display = 'none';
+
+            // إخفاء حقول الإدخال
+            document.getElementById('inputSection').style.display = 'none';
+
+            // إظهار واجهة التسبيح
+            document.getElementById('tasbeehSection').style.display = 'block';
+            document.getElementById('tasbeehDisplayName').innerText = tasbeehName;
+        }
+
+        function openTasbeeh() {
+            // اهتزاز خفيف عند كل ضغطة
+            if (navigator.vibrate) {
+                navigator.vibrate(50);
+            }
+
+            openCount++;
+            document.getElementById('openCounter').innerText = openCount;
+
+            if (openCount >= targetCount) {
+                if (navigator.vibrate) {
+                    navigator.vibrate(200); // اهتزاز أطول عند الاكتمال
+                }
+                document.getElementById('completionMessage').innerText = `✅ تم اكتمال ${tasbeehName} بعدد ${openCount} تسبيحات، بارك الله فيك.`;
+                document.getElementById('completionMessage').style.display = 'block';
+                document.getElementById('completionMessage').style.color = '#28a745';
+                document.querySelector('#tasbeehSection button:first-of-type').disabled = true; // زر التسبيح
+            }
+        }
+
+        function resetOpenTasbeeh() {
+            openCount = 0;
+            targetCount = 0;
+            tasbeehName = "";
+
+            document.getElementById('openCounter').innerText = openCount;
+            document.getElementById('completionMessage').style.display = 'none';
+            document.querySelector('#tasbeehSection button:first-of-type').disabled = false;
+
+            // إعادة إظهار حقول الإدخال
+            document.getElementById('inputSection').style.display = 'block';
+            document.getElementById('tasbeehName').value = '';
+            document.getElementById('tasbeehCount').value = '';
+            document.getElementById('tasbeehSection').style.display = 'none';
+            document.getElementById('completionMessage').style.color = '#28a745';
+        }
+
+        // جلب التاريخ الميلادي والهجري (مع جلب تاريخ السيستاني)
+        function updateCalendar() {
+            const calendarDiv = document.getElementById('calendar');
+            const today = new Date();
+
+            // التاريخ الميلادي والتقديري الفوري
+            const gregorianDate = today.toLocaleDateString('ar-EG', {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+            const hijriDateFallback = new Intl.DateTimeFormat('ar-SA', {
+                calendar: 'islamic',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            }).format(today);
+
+            // العرض الفوري للتاريخ التقديري
+            calendarDiv.innerHTML =
+                `📅 الميلادي: ${gregorianDate} <br> 
+                🕌 الهجري (تقديري): <strong>${hijriDateFallback}</strong> <br>
+                <small>جاري محاولة تحديث التاريخ من مصدره...</small>`;
+
+
+            // محاولة جلب التاريخ من موقع السيستاني في الخلفية (نفس الكود السابق)
+            const proxyUrl = 'https://api.allorigins.win/get?url=';
+            const targetUrl = encodeURIComponent('https://www.sistani.org');
+
+            fetch(proxyUrl + targetUrl)
+                .then(response => {
+                    if (!response.ok) throw new Error('فشل الاتصال بالخادم الوسيط');
+                    return response.json();
+                })
+                .then(data => {
+                    const htmlContent = data.contents;
+                    const regex = /style="margin-left:9px;">([^<]+)<\/span>/;
+                    const match = htmlContent.match(regex);
+
+                    if (match && match[1]) {
+                        const hijriDateFromSistani = match[1].trim();
+                        // تحديث التاريخ بمجرد الحصول على التاريخ الصحيح
+                        calendarDiv.innerHTML =
+                            `📅 الميلادي: ${gregorianDate} <br> 
+                            🕌 الهجري (المرجع): <strong>${hijriDateFromSistani}</strong>`;
+                    } else {
+                        throw new Error('لم يتم العثور على التاريخ بالصيغة المحددة.');
+                    }
+                })
+                .catch(error => {
+                    console.error("خطأ في جلب التاريخ:", error);
+                    // في حال الفشل، نترك التاريخ التقديري مع إشعار
+                    calendarDiv.innerHTML =
+                        `📅 الميلادي: ${gregorianDate} <br> 
+                        🕌 الهجري (تقديري): <strong>${hijriDateFallback}</strong> <br>
+                        <small style="color:#ff6666; display:block; margin-top:5px;">⚠️ فشل جلب تاريخ المرجع.</small>`;
+                });
+        }
+
+        window.onload = updateCalendar;
+    </script>
+
+</body>
+
+</html>
